@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace Dottle.Models
@@ -30,10 +31,13 @@ namespace Dottle.Models
             foreach (WorkingDay day in timeSheet)
             {
                 if (string.IsNullOrEmpty(day.DayName)) continue;
+                prettyFormat += "<div>";
                 prettyFormat += day.DayName + " - ";
-                prettyFormat += "From: " + day.HourFrom + ":" + day.MinuteFrom + " ";
+                prettyFormat += "from: " + day.HourFrom + ":" + day.MinuteFrom + " ";
                 prettyFormat += "to: " + day.HourTo + ":" + day.MinuteTo + "\n";
+                prettyFormat += "</div>";
             }
+
             return prettyFormat;
         }
     }
