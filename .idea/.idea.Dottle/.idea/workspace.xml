@@ -6,7 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="3cb88cf6-845e-4ee4-855c-427e34e85fde" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dottle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dottle/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Controllers/PostsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Controllers/PostsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/bin/Debug/netcoreapp3.1/Dottle.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/bin/Debug/netcoreapp3.1/Dottle.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/bin/Debug/netcoreapp3.1/Dottle.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/bin/Debug/netcoreapp3.1/Dottle.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/bin/Debug/netcoreapp3.1/Dottle.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/bin/Debug/netcoreapp3.1/Dottle.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/bin/Debug/netcoreapp3.1/Dottle.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/bin/Debug/netcoreapp3.1/Dottle.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,11 +32,12 @@
       <list>
         <option value="$PROJECT_DIR$/Dottle/Properties/launchSettings.json" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/Dottle/Controllers/PostsController.cs" />
         <option value="$PROJECT_DIR$/Dottle/Controllers/AuthController.cs" />
         <option value="$PROJECT_DIR$/Dottle/Controllers/HomeController.cs" />
         <option value="$PROJECT_DIR$/Dottle.Tests/HomeControllerTests.cs" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/Dottle/Views/Posts/New.cshtml" />
+        <option value="$PROJECT_DIR$/Dottle/Controllers/PostsController.cs" />
       </list>
     </option>
   </component>
@@ -98,7 +107,7 @@
       <workItem from="1603538909501" duration="604000" />
       <workItem from="1603557529283" duration="99000" />
       <workItem from="1603557643354" duration="29000" />
-      <workItem from="1603557684546" duration="2372000" />
+      <workItem from="1603557684546" duration="3874000" />
     </task>
     <servers />
   </component>
@@ -113,29 +122,29 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="304" y="198" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1603557746648" />
-    <state width="1260" height="280" key="GridCell.Tab.0.bottom" timestamp="1603559706115">
+    <state width="1255" height="280" key="GridCell.Tab.0.bottom" timestamp="1603567241274">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1260" height="280" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1603559706115" />
-    <state width="1260" height="280" key="GridCell.Tab.0.center" timestamp="1603559706114">
+    <state width="1255" height="280" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1603567241274" />
+    <state width="1255" height="280" key="GridCell.Tab.0.center" timestamp="1603567241273">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1260" height="280" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1603559706114" />
-    <state width="1260" height="280" key="GridCell.Tab.0.left" timestamp="1603559706114">
+    <state width="1255" height="280" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1603567241273" />
+    <state width="1255" height="280" key="GridCell.Tab.0.left" timestamp="1603567241273">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1260" height="280" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1603559706114" />
-    <state width="1260" height="280" key="GridCell.Tab.0.right" timestamp="1603559706114">
+    <state width="1255" height="280" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1603567241273" />
+    <state width="1255" height="280" key="GridCell.Tab.0.right" timestamp="1603567241274">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1260" height="280" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1603559706114" />
+    <state width="1255" height="280" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1603567241274" />
     <state x="512" y="262" width="701" height="548" key="find.popup" timestamp="1603557948100">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="512" y="262" width="701" height="548" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1603557948100" />
-    <state x="503" y="248" width="672" height="678" key="search.everywhere.popup" timestamp="1603559903008">
+    <state x="503" y="248" width="672" height="678" key="search.everywhere.popup" timestamp="1603566704055">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="503" y="248" width="672" height="678" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1603559903008" />
+    <state x="503" y="248" width="672" height="678" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1603566704055" />
   </component>
 </project>
