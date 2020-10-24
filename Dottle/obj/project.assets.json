@@ -5885,11 +5885,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/valdas/Projects/Support_Your_Locals/Support_Your_Locals/Support_Your_Locals.csproj",
-      "projectName": "Support_Your_Locals",
-      "projectPath": "/Users/valdas/Projects/Support_Your_Locals/Support_Your_Locals/Support_Your_Locals.csproj",
+      "projectUniqueName": "/Users/valdas/Projects/Dottle/Dottle/Dottle.csproj",
+      "projectName": "Dottle",
+      "projectPath": "/Users/valdas/Projects/Dottle/Dottle/Dottle.csproj",
       "packagesPath": "/Users/valdas/.nuget/packages/",
-      "outputPath": "/Users/valdas/Projects/Support_Your_Locals/Support_Your_Locals/obj/",
+      "outputPath": "/Users/valdas/Projects/Dottle/Dottle/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/valdas/.nuget/NuGet/NuGet.Config"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UxKB7fpGXNdpP+Ws9c3pllvzIhs25HHgNluyEO4humticITPXDh5H551SwfRFUnUpd6NLlOspiW9lUfF9zl7UA==",
+  "dgSpecHash": "/+l6wqd2aKSTAvSzuTVtDk/dVgTd6HV8lvp3DTqhi+p757GaIGuwh4+Ip4pWXT6AWW4ZxumGQhrfK+1fXo0oTg==",
   "success": true,
-  "projectFilePath": "/Users/valdas/Projects/Support_Your_Locals/Support_Your_Locals/Support_Your_Locals.csproj",
+  "projectFilePath": "/Users/valdas/Projects/Dottle/Dottle/Dottle.csproj",
   "expectedPackageFiles": [
     "/Users/valdas/.nuget/packages/jquery/1.4.4/jquery.1.4.4.nupkg.sha512",
     "/Users/valdas/.nuget/packages/jquery.ajax.unobtrusive/2.0.20710/jquery.ajax.unobtrusive.2.0.20710.nupkg.sha512",
