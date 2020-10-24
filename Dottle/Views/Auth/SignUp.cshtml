@@ -1,0 +1,34 @@
+﻿@model Support_Your_Locals.Models.UserRegisterModel
+
+<div class="auth-container">
+    <div class="container box">
+        <h1>Sign Up</h1>
+        <form asp-action="SignUp" method="post">
+            <div class="form-group">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" class="form-control">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name">Name</label>
+                <input asp-for="Name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="Surname">Surname</label>
+                <input asp-for="Surname" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthDate">Birth date</label>
+                <input asp-for="BirthDate" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control">
+            </div>
+            <div class="form-group">
+                <a asp-controller="Auth" asp-action="SignIn">Already a member? Sign in</a>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+    </div>
+</div>

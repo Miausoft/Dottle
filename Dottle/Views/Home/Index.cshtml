@@ -1,0 +1,33 @@
+﻿@model List<PostModel>
+@{
+    ViewData["Title"] = "Home Page";
+    List<PostModel> posts = ViewData["posts"] as List<PostModel>;
+    
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome to Dottle</h1>
+    <p class="lead">Your single point of contact for working with local businesses</p>
+    <p>Here are the latests posts</p>
+    <div class="container">
+        @{
+            foreach (PostModel post in @Model) 
+            {
+                <div class="card post-entry">
+                    <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+                            <div class="card-body">
+                                <h5 class="card-title">@post.Title</h5>
+                                <h5 class="card-title">@post.Description</h5>
+                                <div><label>Contacts</label></div>
+                                <div class="contacts-body">
+                                    <div><label class="card-title">@post.Email</label></div>
+                                    <div><label class="card-title">@post.PhoneNumber</label></div>
+                                    <div><label class="card-title">@post.Address</label></div>
+                                </div>
+                                <div><label class="card-title">@post.TimeSheet</label></div>
+                                <a href="#" class="btn btn-primary">Visit</a>
+                            </div>
+                </div>
+            }
+        }
+    </div>
+</div>
