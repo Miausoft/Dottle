@@ -21,14 +21,16 @@ namespace Dottle.Controllers
         
         public IActionResult New()
         {
-            List<string> days = new List<string>();
-            days.Add("Monday");
-            days.Add("Tuesday");
-            days.Add("Wednesday");
-            days.Add("Thursday");
-            days.Add("Friday");
-            days.Add("Saturday");
-            days.Add("Sunday");
+            List<string> days = new List<string>
+            {
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+            };
 
             return View(days);
         }
