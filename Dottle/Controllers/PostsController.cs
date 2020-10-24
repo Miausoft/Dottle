@@ -45,7 +45,7 @@ namespace Dottle.Controllers
             {
                 return Json(string.Join("\n", errors));
             }
-            
+
             await db.Posts.AddAsync(post);
             await db.SaveChangesAsync();
             return Json("Your post has been successfully created!");
@@ -76,6 +76,6 @@ namespace Dottle.Controllers
 
             return errors;
         }
-        
+
     }
 }

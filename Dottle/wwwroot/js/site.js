@@ -32,7 +32,7 @@ $(document).ready(() => {
        const description = form.find('#PostDescription').prop('value');
        
        const checkedBoxes = $('.day-check-box:checked');
-       let timeSheet = {};
+       let timeSheet = [{}];
        
        $.each(checkedBoxes, (id, el) => {
            const elem = $(el);
@@ -42,12 +42,13 @@ $(document).ready(() => {
            const hrTo = $(comboDate.get(1)).find('.hour').prop('value');
            const minTo = $(comboDate.get(1)).find('.minute').prop('value');
            
-           timeSheet[elem.prop('id')] = {
-               hourFrom: hrFrom,
-               minuteFrom: minFrom,
-               hourTo: hrTo,
-               minuteTo: minTo
-           }
+           timeSheet.push({
+               DayName: elem.prop('id'),
+               HourFrom: hrFrom,
+               MinuteFrom: minFrom,
+               HourTo: hrTo,
+               MinuteTo: minTo
+           });
        });
        
        console.log(JSON.stringify(timeSheet));

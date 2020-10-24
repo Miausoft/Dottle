@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace Dottle.Models
 {
@@ -20,5 +22,19 @@ namespace Dottle.Models
         public string Address { get; set; }
         [Required(ErrorMessage = "Select working hours")]
         public string TimeSheet { get; set; }
+
+        public string PrettyWorkingHours()
+        {
+            string prettyFormat = "";
+            var timeSheet = JsonConvert.DeserializeObject<List<WorkingDay>>(this.TimeSheet);
+            foreach (WorkingDay day in timeSheet)
+            {
+                if (string.IsNullOrEmpty(day.DayName)) continue;
+                prettyFormat += day.DayName + " - ";
+                prettyFormat += "From: " + day.HourFrom + ":" + day.MinuteFrom + " ";
+                prettyFormat += "to: " + day.HourTo + ":" + day.MinuteTo + "\n";
+            }
+            return prettyFormat;
+        }
     }
 }

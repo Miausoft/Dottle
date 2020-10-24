@@ -35,6 +35,7 @@
           <e p="ServiceDbContext.cs" t="Include" />
           <e p="UserLoginModel.cs" t="Include" />
           <e p="UserRegisterModel.cs" t="Include" />
+          <e p="WorkingDayModel.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
