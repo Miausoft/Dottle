@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Support_Your_Locals.Controllers;
-using Support_Your_Locals.Models;
+using Dottle.Controllers;
+using Dottle.Models;
 using Xunit;
 
-namespace Support_Your_Locals.Tests
+namespace Dottle.Tests
 {
     public class HomeControllerTests
     {

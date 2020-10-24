@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Support_Your_Locals.Models
+namespace Dottle.Models
 {
     public class ServiceDbContext : DbContext
     {

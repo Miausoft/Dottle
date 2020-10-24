@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Support_Your_Locals.Models;
+using Dottle.Models;
 
-namespace Support_Your_Locals.Migrations
+namespace Dottle.Migrations
 {
     [DbContext(typeof(ServiceDbContext))]
     [Migration("20201024111652_InitialCreate")]
@@ -20,7 +20,7 @@ namespace Support_Your_Locals.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Support_Your_Locals.Models.PostModel", b =>
+            modelBuilder.Entity("Dottle.Models.PostModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -56,7 +56,7 @@ namespace Support_Your_Locals.Migrations
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("Support_Your_Locals.Models.UserRegisterModel", b =>
+            modelBuilder.Entity("Dottle.Models.UserRegisterModel", b =>
                 {
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(450)");

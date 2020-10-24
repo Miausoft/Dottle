@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Support_Your_Locals.Migrations
+namespace Dottle.Migrations
 {
     public partial class InitialCreate : Migration
     {

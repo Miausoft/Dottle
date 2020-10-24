@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Support_Your_Locals.Models;
+using Dottle.Models;
 
-namespace Support_Your_Locals.Controllers
+namespace Dottle.Controllers
 {
     public class AuthController : Controller
     {

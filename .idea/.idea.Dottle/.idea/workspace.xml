@@ -5,18 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3cb88cf6-845e-4ee4-855c-427e34e85fde" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Dottle.Tests/Support_Your_Locals.Tests.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Dottle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dottle/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle.Tests/Comparer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle.Tests/Comparer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle.Tests/Dottle.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle.Tests/Dottle.Tests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle.Tests/HomeControllerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle.Tests/HomeControllerTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle.Tests/UserTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle.Tests/UserTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle.Tests/obj/Debug/netcoreapp3.1/Dottle.Tests.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle.Tests/obj/Debug/netcoreapp3.1/Dottle.Tests.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle.Tests/obj/Debug/netcoreapp3.1/Dottle.Tests.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle.Tests/obj/Debug/netcoreapp3.1/Dottle.Tests.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle.Tests/obj/Dottle.Tests.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle.Tests/obj/Dottle.Tests.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle.Tests/obj/Dottle.Tests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle.Tests/obj/Dottle.Tests.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dottle.Tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle.Tests/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dottle.Tests/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle.Tests/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dottle.Tests/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle.Tests/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dottle.Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle.Tests/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dottle.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dottle/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dottle/Support_Your_Locals.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dottle/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dottle/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dottle/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dottle/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Controllers/AuthController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Controllers/PostsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Controllers/PostsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Migrations/20201024111652_InitialCreate.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Migrations/20201024111652_InitialCreate.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Migrations/20201024111652_InitialCreate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Migrations/20201024111652_InitialCreate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Migrations/ServiceDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Migrations/ServiceDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Models/BusinessRegisterModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Models/BusinessRegisterModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Models/ErrorViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Models/ErrorViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Models/PostModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Models/PostModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Models/ServiceDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Models/ServiceDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Models/UserLoginModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Models/UserLoginModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Models/UserRegisterModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Models/UserRegisterModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Views/Auth/SignIn.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Views/Auth/SignIn.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Views/Auth/SignUp.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Views/Auth/SignUp.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Views/_ViewImports.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Views/_ViewImports.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,10 +45,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.5.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Dottle/Properties/launchSettings.json" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -98,7 +121,7 @@
       <workItem from="1603538909501" duration="604000" />
       <workItem from="1603557529283" duration="99000" />
       <workItem from="1603557643354" duration="29000" />
-      <workItem from="1603557684546" duration="63000" />
+      <workItem from="1603557684546" duration="312000" />
     </task>
     <servers />
   </component>
@@ -113,5 +136,13 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="304" y="198" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1603557746648" />
+    <state x="512" y="262" width="701" height="548" key="find.popup" timestamp="1603557948100">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="512" y="262" width="701" height="548" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1603557948100" />
+    <state x="503" y="248" width="672" height="678" key="search.everywhere.popup" timestamp="1603557898517">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="503" y="248" width="672" height="678" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1603557898517" />
   </component>
 </project>

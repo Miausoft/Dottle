@@ -15,8 +15,8 @@
     "frameworks": {
       "netcoreapp3.1": {
         "projectReferences": {
-          "/Users/valdas/Projects/Dottle/Support_Your_Locals/Support_Your_Locals.csproj": {
-            "projectPath": "/Users/valdas/Projects/Dottle/Support_Your_Locals/Support_Your_Locals.csproj"
+          "/Users/valdas/Projects/Dottle/Dottle/Dottle.csproj": {
+            "projectPath": "/Users/valdas/Projects/Dottle/Dottle/Dottle.csproj"
           }
         }
       }
@@ -62,6 +62,9 @@
       "assetTargetFallback": true,
       "warn": true,
       "frameworkReferences": {
+        "Microsoft.AspNetCore.App": {
+          "privateAssets": "none"
+        },
         "Microsoft.NETCore.App": {
           "privateAssets": "all"
         }

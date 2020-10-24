@@ -2,9 +2,9 @@
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Support_Your_Locals.Models;
+using Dottle.Models;
 
-namespace Support_Your_Locals.Controllers
+namespace Dottle.Controllers
 {
     public class PostsController : Controller
     {

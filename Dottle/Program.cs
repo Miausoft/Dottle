@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Support_Your_Locals
+namespace Dottle
 {
     public class Program
     {

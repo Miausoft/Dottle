@@ -1,7 +1,7 @@
-﻿using Support_Your_Locals.Models;
+﻿using Dottle.Models;
 using Xunit;
 
-namespace Support_Your_Locals.Tests
+namespace Dottle.Tests
 {
     public class UserTests
     {

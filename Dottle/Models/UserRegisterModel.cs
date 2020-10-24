@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Support_Your_Locals.Models
+namespace Dottle.Models
 {
     public class UserRegisterModel
     {

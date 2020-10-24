@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Support_Your_Locals\Support_Your_Locals.csproj" />
+    <ProjectReference Include="..\Dottle\Dottle.csproj" />
   </ItemGroup>
 
 </Project>

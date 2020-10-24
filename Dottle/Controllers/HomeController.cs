@@ -3,9 +3,9 @@ using System.Diagnostics;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Support_Your_Locals.Models;
+using Dottle.Models;
 
-namespace Support_Your_Locals.Controllers
+namespace Dottle.Controllers
 {
     public class HomeController : Controller
     {

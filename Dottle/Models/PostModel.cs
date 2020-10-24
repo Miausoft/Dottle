@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Support_Your_Locals.Models
+namespace Dottle.Models
 {
     public class PostModel
     {

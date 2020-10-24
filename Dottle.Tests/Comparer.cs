@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Support_Your_Locals.Tests
+namespace Dottle.Tests
 {
     public class Comparer
     {

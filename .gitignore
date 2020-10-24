@@ -1,7 +1,7 @@
 .vs
 .idea
 .DS_Store
-Support_Your_Locals/.DS_Store
+Dottle/.DS_Store
 ###################
 # compiled source #
 ###################
@@ -26,8 +26,8 @@ _UpgradeReport_Files/
 ###############
 # Directories #
 ###############
-Support_Your_Locals/*/bin/Debug
-Support_Your_Locals/*/bin/Release
+Dottle/*/bin/Debug
+Dottle/*/bin/Release
 TestResults/
 ###################
 # Web publish log #
@@ -77,4 +77,4 @@ _[Ss]cripts
 *.nupkg
 *.ncrunchsolution
 *.dot[Cc]over
-/Support_Your_Locals.Tests
+/Dottle.Tests
