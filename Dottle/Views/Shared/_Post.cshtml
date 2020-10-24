@@ -2,13 +2,14 @@
     <!--<img class="card-img-top" src="..." alt="Card image cap">-->
     <div class="card-body">
         <h5 class="card-title">@Model.Title</h5>
-        <h5 class="card-title">@Model.Description</h5>
+        <p class="card-title">@Model.Description</p>
         <div><label>Contacts</label></div>
         <div class="contacts-body">
-            <div><label class="card-title">@Model.Email</label></div>
-            <div><label class="card-title">@Model.PhoneNumber</label></div>
-            <div><label class="card-title">@Model.Address</label></div>
+            <div><label class="card-title"><b>Email: </b>@Model.Email</label></div>
+            <div><label class="card-title"><b>Phone number: </b>@Model.PhoneNumber</label></div>
+            <div><label class="card-title"><b>Address: </b> @Model.Address</label></div>
         </div>
+        <div><label>Working hours</label></div>
         <div><label class="card-title">@Model.TimeSheet</label></div>
         <a href="#" class="btn btn-primary">Visit</a>
     </div>

@@ -23,22 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3cb88cf6-845e-4ee4-855c-427e34e85fde" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Dottle/Views/Shared/_Post.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Dottle/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dottle/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dottle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dottle/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dottle/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Controllers/PostsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Controllers/PostsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dottle/Views/Shared/_Post.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/Views/Shared/_Post.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dottle/bin/Debug/netcoreapp3.1/Dottle.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/bin/Debug/netcoreapp3.1/Dottle.Views.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dottle/bin/Debug/netcoreapp3.1/Dottle.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/bin/Debug/netcoreapp3.1/Dottle.Views.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dottle/bin/Debug/netcoreapp3.1/Dottle.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/bin/Debug/netcoreapp3.1/Dottle.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dottle/bin/Debug/netcoreapp3.1/Dottle.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/bin/Debug/netcoreapp3.1/Dottle.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.RazorCoreGenerate.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.RazorCoreGenerate.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.Views.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.Views.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Dottle.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Razor/Views/Home/Index.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dottle/obj/Debug/netcoreapp3.1/Razor/Views/Home/Index.cshtml.g.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,9 +52,9 @@
         <option value="$PROJECT_DIR$/Dottle.Tests/HomeControllerTests.cs" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/Dottle/Views/Posts/New.cshtml" />
-        <option value="$PROJECT_DIR$/Dottle/Controllers/PostsController.cs" />
         <option value="$PROJECT_DIR$/Dottle/Views/Home/Index.cshtml" />
         <option value="$PROJECT_DIR$/Dottle/Views/Shared/_Post.cshtml" />
+        <option value="$PROJECT_DIR$/Dottle/Controllers/PostsController.cs" />
       </list>
     </option>
   </component>
@@ -133,7 +124,7 @@
       <workItem from="1603538909501" duration="604000" />
       <workItem from="1603557529283" duration="99000" />
       <workItem from="1603557643354" duration="29000" />
-      <workItem from="1603557684546" duration="4338000" />
+      <workItem from="1603557684546" duration="5025000" />
     </task>
     <servers />
   </component>
@@ -159,22 +150,22 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="304" y="198" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1603557746648" />
-    <state width="1253" height="280" key="GridCell.Tab.0.bottom" timestamp="1603571414828">
+    <state width="1249" height="280" key="GridCell.Tab.0.bottom" timestamp="1603572088363">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1253" height="280" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1603571414828" />
-    <state width="1253" height="280" key="GridCell.Tab.0.center" timestamp="1603571414826">
+    <state width="1249" height="280" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1603572088363" />
+    <state width="1249" height="280" key="GridCell.Tab.0.center" timestamp="1603572088363">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1253" height="280" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1603571414826" />
-    <state width="1253" height="280" key="GridCell.Tab.0.left" timestamp="1603571414826">
+    <state width="1249" height="280" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1603572088362" />
+    <state width="1249" height="280" key="GridCell.Tab.0.left" timestamp="1603572088362">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1253" height="280" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1603571414826" />
-    <state width="1253" height="280" key="GridCell.Tab.0.right" timestamp="1603571414827">
+    <state width="1249" height="280" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1603572088362" />
+    <state width="1249" height="280" key="GridCell.Tab.0.right" timestamp="1603572088363">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1253" height="280" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1603571414827" />
+    <state width="1249" height="280" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1603572088363" />
     <state x="512" y="262" width="701" height="548" key="find.popup" timestamp="1603557948100">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>

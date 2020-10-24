@@ -38,14 +38,15 @@ namespace Dottle.Controllers
         {
             PostModel post = JsonConvert.DeserializeObject<PostModel>(jsonPost);
             List<string> errors = ValidatePost(post);
-            if (errors.Count == 0)
+            
+            if (errors.Count != 0)
             {
-                await db.Posts.AddAsync(post);
-                await db.SaveChangesAsync();
-                return Json("Your post has been successfully created!");
+                return Json(string.Join("\n", errors));
             }
-
-            return Json(string.Join("\n", errors));
+            
+            await db.Posts.AddAsync(post);
+            await db.SaveChangesAsync();
+            return Json("Your post has been successfully created!");
         }
 
         private List<string> ValidatePost(PostModel post)
