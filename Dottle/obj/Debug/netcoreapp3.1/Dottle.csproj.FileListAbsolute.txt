@@ -77,3 +77,4 @@
 /Users/valdas/Projects/Dottle/Dottle/obj/Debug/netcoreapp3.1/Dottle.dll
 /Users/valdas/Projects/Dottle/Dottle/obj/Debug/netcoreapp3.1/Dottle.pdb
 /Users/valdas/Projects/Dottle/Dottle/obj/Debug/netcoreapp3.1/Dottle.genruntimeconfig.cache
+/Users/valdas/Projects/Dottle/Dottle/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Post.cshtml.g.cs
