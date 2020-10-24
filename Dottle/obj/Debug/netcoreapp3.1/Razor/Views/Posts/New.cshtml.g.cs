@@ -14,20 +14,20 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
 #line 1 "/Users/valdas/Projects/Dottle/Dottle/Views/_ViewImports.cshtml"
-using Support_Your_Locals;
+using Dottle;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 2 "/Users/valdas/Projects/Dottle/Dottle/Views/_ViewImports.cshtml"
-using Support_Your_Locals.Models;
+using Dottle.Models;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"11b19b3fa13b36b5f48f48b4c675df1b2d02a46c", @"/Views/Posts/New.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cdd9aa9e82edb0f06604f3e44a8bf70c38561f07", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"04d9aea1b9b66330ea5d35249273756a82703680", @"/Views/_ViewImports.cshtml")]
     public class Views_Posts_New : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<string>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("id", new global::Microsoft.AspNetCore.Html.HtmlString("new-post-form"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -68,7 +68,7 @@ using Support_Your_Locals.Models;
 #line hidden
 #nullable disable
             WriteLiteral("<div class=\"card\">\n    <div class=\"card-header\">\n        <h5>Create a New Post</h5>\n    </div>\n    <div class=\"card-body\">\n        <div class=\"container\">\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "11b19b3fa13b36b5f48f48b4c675df1b2d02a46c4476", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "11b19b3fa13b36b5f48f48b4c675df1b2d02a46c4450", async() => {
                 WriteLiteral(@"
                 <div class=""form-group"">
                     <label for=""PostTitle"">Title</label>

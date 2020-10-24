@@ -24,8 +24,8 @@
         </e>
         <e p="Dottle.csproj" t="IncludeRecursive" />
         <e p="Migrations" t="Include">
-          <e p="20201024111652_InitialCreate.cs" t="Include" />
-          <e p="20201024111652_InitialCreate.Designer.cs" t="Include" />
+          <e p="20201024171430_Post.cs" t="Include" />
+          <e p="20201024171430_Post.Designer.cs" t="Include" />
           <e p="ServiceDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Dottle.Models;
 
@@ -10,6 +12,11 @@ namespace Dottle.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private ServiceDbContext db;
+
+        public PostsController(ServiceDbContext db)
+        {
+            this.db = db;
+        }
         
         public IActionResult New()
         {
@@ -26,11 +33,12 @@ namespace Dottle.Controllers
         }
 
         [HttpPost]
-        public JsonResult Create(string jsonPost)
+        public async Task<JsonResult> Create(string jsonPost)
         {
             PostModel post = JsonConvert.DeserializeObject<PostModel>(jsonPost);
-            string resp = "We got a post: " + post.Title;
-            return Json(resp);
+            await db.Posts.AddAsync(post);
+            await db.SaveChangesAsync();
+            return Json("Saved!");
         }
         
     }

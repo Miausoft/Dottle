@@ -45,9 +45,9 @@ namespace Dottle.Controllers
         {
             if (ModelState.IsValid)
             {
-                var response = await db.Users.FindAsync(user.Email);
-                if (response != null) return View("LoggedIn");
-                return View("SignIn", "User not found!");
+                //var response = await db.Users.FindAsync(user.Email);
+                //if (response != null) return View("LoggedIn");
+                return View("SignIn");
             }
             else
             {

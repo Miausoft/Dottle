@@ -14,20 +14,20 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
 #line 1 "/Users/valdas/Projects/Dottle/Dottle/Views/_ViewImports.cshtml"
-using Support_Your_Locals;
+using Dottle;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 2 "/Users/valdas/Projects/Dottle/Dottle/Views/_ViewImports.cshtml"
-using Support_Your_Locals.Models;
+using Dottle.Models;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"86917d41fdc20f7e8b2421a05550227f13eb304a", @"/Views/Home/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cdd9aa9e82edb0f06604f3e44a8bf70c38561f07", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"04d9aea1b9b66330ea5d35249273756a82703680", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<PostModel>>
     {
         #pragma warning disable 1998

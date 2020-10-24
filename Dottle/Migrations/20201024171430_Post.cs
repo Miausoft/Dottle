@@ -2,7 +2,7 @@
 
 namespace Dottle.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Post : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
