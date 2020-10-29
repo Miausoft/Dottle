@@ -159,3 +159,4 @@ C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\staticwebassets\Dottle.Stat
 C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\Dottle.dll
 C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\Dottle.pdb
 C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\Dottle.genruntimeconfig.cache
+C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\Razor\Views\Posts\Show.cshtml.g.cs

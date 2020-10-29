@@ -35,6 +35,11 @@ namespace Dottle.Controllers
             return View(days);
         }
 
+        public IActionResult Show()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<JsonResult> Create(string jsonPost)
         {
