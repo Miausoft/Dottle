@@ -39,12 +39,8 @@ namespace Dottle.Models
                 string minuteTo = day.MinuteTo;
                 sb.Append("<div>");
                 sb.Append(day.DayName + " - ");
-                if (System.Int32.Parse(day.HourFrom) < 10) hourFrom = NumberToTime(day.HourFrom);
-                if (System.Int32.Parse(day.HourTo) < 10) hourTo = NumberToTime(day.HourTo);
-                if (System.Int32.Parse(day.MinuteFrom) < 10) minuteFrom = NumberToTime(day.MinuteFrom);
-                if (System.Int32.Parse(day.MinuteTo) < 10) minuteTo = NumberToTime(day.MinuteTo);
-                sb.Append("from: " + hourFrom + ":" + minuteFrom + " ");
-                sb.Append("to: " + hourTo + ":" + minuteTo + "\n");
+                sb.Append("from: " + NumberToTime(day.HourFrom) + ":" + NumberToTime(day.MinuteFrom) + " ");
+                sb.Append("to: " + NumberToTime(day.HourTo) + ":" + NumberToTime(day.MinuteTo) + "\n");
                 sb.Append("</div>");
             }
 
@@ -52,7 +48,7 @@ namespace Dottle.Models
         }
         private string NumberToTime (string time)
         {
-            time = "0" + time;
+            if (System.Int32.Parse(time) < 10) time = "0" + time;
             return time;
         }
     }
