@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Cryptography;
+using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -27,7 +28,7 @@ namespace Dottle.Models
 
         public string PrettyWorkingHours()
         {
-            string prettyFormat = "";
+            StringBuilder sb = new StringBuilder("");
             var timeSheet = JsonConvert.DeserializeObject<List<WorkingDay>>(this.TimeSheet);
             foreach (WorkingDay day in timeSheet)
             {
@@ -36,18 +37,18 @@ namespace Dottle.Models
                 string hourTo = day.HourTo;
                 string minuteFrom = day.MinuteFrom;
                 string minuteTo = day.MinuteTo;
-                prettyFormat += "<div>";
-                prettyFormat += day.DayName + " - ";
+                sb.Append("<div>");
+                sb.Append(day.DayName + " - ");
                 if (System.Int32.Parse(day.HourFrom) < 10) hourFrom = NumberToTime(day.HourFrom);
                 if (System.Int32.Parse(day.HourTo) < 10) hourTo = NumberToTime(day.HourTo);
                 if (System.Int32.Parse(day.MinuteFrom) < 10) minuteFrom = NumberToTime(day.MinuteFrom);
                 if (System.Int32.Parse(day.MinuteTo) < 10) minuteTo = NumberToTime(day.MinuteTo);
-                prettyFormat += "from: " + hourFrom + ":" + minuteFrom + " ";
-                prettyFormat += "to: " + hourTo + ":" + minuteTo + "\n";
-                prettyFormat += "</div>";
+                sb.Append("from: " + hourFrom + ":" + minuteFrom + " ");
+                sb.Append("to: " + hourTo + ":" + minuteTo + "\n");
+                sb.Append("</div>");
             }
 
-            return prettyFormat;
+            return sb.ToString();
         }
         private string NumberToTime (string time)
         {
