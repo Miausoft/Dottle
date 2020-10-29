@@ -33,10 +33,6 @@ namespace Dottle.Models
             foreach (WorkingDay day in timeSheet)
             {
                 if (string.IsNullOrEmpty(day.DayName)) continue;
-                string hourFrom = day.HourFrom;
-                string hourTo = day.HourTo;
-                string minuteFrom = day.MinuteFrom;
-                string minuteTo = day.MinuteTo;
                 sb.Append("<div>");
                 sb.Append(day.DayName + " - ");
                 sb.Append("from: " + NumberToTime(day.HourFrom) + ":" + NumberToTime(day.MinuteFrom) + " ");
