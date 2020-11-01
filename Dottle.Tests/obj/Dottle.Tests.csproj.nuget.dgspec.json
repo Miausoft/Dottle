@@ -1,34 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nenar\\dottle\\Dottle.Tests\\Dottle.Tests.csproj": {}
+    "/Users/valdas/Projects/Dottle/Dottle.Tests/Dottle.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nenar\\dottle\\Dottle.Tests\\Dottle.Tests.csproj": {
+    "/Users/valdas/Projects/Dottle/Dottle.Tests/Dottle.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nenar\\dottle\\Dottle.Tests\\Dottle.Tests.csproj",
+        "projectUniqueName": "/Users/valdas/Projects/Dottle/Dottle.Tests/Dottle.Tests.csproj",
         "projectName": "Dottle.Tests",
-        "projectPath": "C:\\Users\\nenar\\dottle\\Dottle.Tests\\Dottle.Tests.csproj",
-        "packagesPath": "C:\\Users\\nenar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nenar\\dottle\\Dottle.Tests\\obj\\",
+        "projectPath": "/Users/valdas/Projects/Dottle/Dottle.Tests/Dottle.Tests.csproj",
+        "packagesPath": "/Users/valdas/.nuget/packages/",
+        "outputPath": "/Users/valdas/Projects/Dottle/Dottle.Tests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\nenar\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/valdas/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\nenar\\dottle\\Dottle\\Dottle.csproj": {
-                "projectPath": "C:\\Users\\nenar\\dottle\\Dottle\\Dottle.csproj"
+              "/Users/valdas/Projects/Dottle/Dottle/Dottle.csproj": {
+                "projectPath": "/Users/valdas/Projects/Dottle/Dottle/Dottle.csproj"
               }
             }
           }
@@ -81,28 +79,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.402/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\nenar\\dottle\\Dottle\\Dottle.csproj": {
+    "/Users/valdas/Projects/Dottle/Dottle/Dottle.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nenar\\dottle\\Dottle\\Dottle.csproj",
+        "projectUniqueName": "/Users/valdas/Projects/Dottle/Dottle/Dottle.csproj",
         "projectName": "Dottle",
-        "projectPath": "C:\\Users\\nenar\\dottle\\Dottle\\Dottle.csproj",
-        "packagesPath": "C:\\Users\\nenar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nenar\\dottle\\Dottle\\obj\\",
+        "projectPath": "/Users/valdas/Projects/Dottle/Dottle/Dottle.csproj",
+        "packagesPath": "/Users/valdas/.nuget/packages/",
+        "outputPath": "/Users/valdas/Projects/Dottle/Dottle/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\nenar\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/valdas/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -164,7 +160,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.402/RuntimeIdentifierGraph.json"
         }
       }
     }

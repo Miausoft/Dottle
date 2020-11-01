@@ -41,6 +41,7 @@ namespace Dottle.Controllers
         }
 
         [HttpPost]
+        // TODO: change param to PostModel for auto-deserialization
         public async Task<JsonResult> Create(string jsonPost)
         {
             PostModel post = JsonConvert.DeserializeObject<PostModel>(jsonPost);
@@ -48,6 +49,7 @@ namespace Dottle.Controllers
             
             if (errors.Count != 0)
             {
+                // TODO: create Error validation class and return actual JSON
                 return Json(string.Join("\n", errors));
             }
 
