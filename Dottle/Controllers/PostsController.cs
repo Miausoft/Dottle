@@ -35,9 +35,10 @@ namespace Dottle.Controllers
             return View(days);
         }
 
-        public IActionResult Show()
+        public async Task<IActionResult> Show(int id)
         {
-            return View();
+            var post = await db.Posts.FindAsync(id);
+            return View(post);
         }
 
         [HttpPost]
