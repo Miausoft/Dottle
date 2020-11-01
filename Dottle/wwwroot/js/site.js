@@ -1,7 +1,4 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
+﻿// https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 
 $(document).ready(() => {
    const initPostCheckBoxes = () => {
@@ -62,24 +59,6 @@ $(document).ready(() => {
            )
        };
        $.post(controllerEndpoint, postModel, (resp) => alert(resp));
-       /*$.ajax({
-           url: controllerEndpoint,
-           type: 'POST',
-           jsonData: JSON.stringify({ postData: {
-                   postTitle: title,
-                   postPhoneNumber: phoneNumber,
-                   postEmail: email,
-                   postAddress: address,
-                   postDescription: description,
-                   postTimeSheet: JSON.stringify(timeSheet)
-               }}),
-           dataType: 'json',
-           contentType: 'application/json',
-           success: (resp) => {
-               console.log("Endpoint reached!");
-               console.log(resp);
-           }
-       });*/
    }
    
    initPostCheckBoxes();
