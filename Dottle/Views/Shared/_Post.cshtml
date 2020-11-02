@@ -9,8 +9,6 @@
             <div><label class="card-title"><b>Phone number: </b>@Model.PhoneNumber</label></div>
             <div><label class="card-title"><b>Address: </b> @Model.Address</label></div>
         </div>
-        <div><label>Working hours</label></div>
-        <div><label class="card-title">@Html.Raw(@Model.PrettyWorkingHours())</label></div>
-        <a href="#" class="btn btn-primary">Visit</a>
+        <a asp-controller="Posts" asp-action="Show" asp-route-id="@Model.Id"class="btn btn-primary">Visit</a>
     </div>
 </div>
