@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Dottle.Models;
@@ -38,7 +39,10 @@ namespace Dottle.Controllers
         public async Task<IActionResult> Show(int id)
         {
             var post = await db.Posts.FindAsync(id);
-            return View(post);
+            PostShowViewModel postShow = new PostShowViewModel();
+            postShow.Post = post;
+            postShow.PrettyTimeSheet = PrettyTimeSheet(post.TimeSheet);
+            return View(postShow);
         }
 
         [HttpPost]
@@ -83,6 +87,29 @@ namespace Dottle.Controllers
             }
 
             return errors;
+        }
+
+        private string PrettyTimeSheet(string ts)
+        {
+            StringBuilder sb = new StringBuilder("");
+            var timeSheet = JsonConvert.DeserializeObject<List<WorkingDay>>(ts);
+            foreach (WorkingDay day in timeSheet)
+            {
+                if (string.IsNullOrEmpty(day.DayName)) continue;
+                sb.Append("<div>");
+                sb.Append(day.DayName + " - ");
+                sb.Append("from: " + NumberToTime(day.HourFrom) + ":" + NumberToTime(day.MinuteFrom) + " ");
+                sb.Append("to: " + NumberToTime(day.HourTo) + ":" + NumberToTime(day.MinuteTo) + "\n");
+                sb.Append("</div>");
+            }
+
+            return sb.ToString();
+        }
+        
+        private string NumberToTime (string time)
+        {
+            if (System.Int32.Parse(time) < 10) time = "0" + time;
+            return time;
         }
 
     }
