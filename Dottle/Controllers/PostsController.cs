@@ -91,16 +91,12 @@ namespace Dottle.Controllers
         }
         public bool IsValidPhone(string Phone)
         {
-                if (string.IsNullOrEmpty(Phone))
-                    return false;
                 var r = new Regex(@"[0-9().+\s]+");
                 return r.IsMatch(Phone);
         } 
 
         public bool IsValidEmail(string Email)
         {
-            if (string.IsNullOrEmpty(Email))
-                return false;
             var r = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             return r.IsMatch(Email);
         }
