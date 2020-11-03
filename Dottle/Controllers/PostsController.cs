@@ -74,7 +74,7 @@ namespace Dottle.Controllers
             
             if (IsValidPhone(post.PhoneNumber))
             {
-                errors.Add("Error: Invalid phone number!");
+               errors.Add("Error: Invalid phone number!");
             }
             
             if (IsValidEmail(post.Email))
@@ -91,14 +91,14 @@ namespace Dottle.Controllers
         }
         public bool IsValidPhone(string Phone)
         {
-                var r = new Regex(@"[0-9().+\s]+");
-                return r.IsMatch(Phone);
+            var r = new Regex(@"[0-9().+\s]+");
+                return r.IsMatch(Phone) && !string.IsNullOrEmpty(Phone);
         } 
 
         public bool IsValidEmail(string Email)
         {
             var r = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-            return r.IsMatch(Email);
+            return r.IsMatch(Email) && !string.IsNullOrEmpty(Email);
         }
 
         private string PrettyTimeSheet(string ts)
