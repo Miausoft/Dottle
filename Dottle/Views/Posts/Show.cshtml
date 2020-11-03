@@ -6,6 +6,29 @@
             <h3 class="card-title">@Model.Post.Title</h3>
             <h6 class="card-subtitle mb-2 text-muted">@Model.Post.Description</h6>
         </div>
+        <div class="card-body">
+            <ul class="list-group list-grou-flush">
+                <h6 class="card-title">Contacts</h6>
+                <li class="list-group-item">
+                    <div>
+                        <b>Phone number:</b> @Model.Post.PhoneNumber
+                    </div>
+                    <div>
+                        <b>Email:</b> @Model.Post.Email
+                    </div>
+                    <div>
+                        <b>Address:</b> @Model.Post.Address
+                    </div>
+                </li>
+                
+                <h6 class="card-title" style="margin-top: 8px;">Working hours</h6>
+                <li class="list-group-item">
+                    <div>
+                        @Html.Raw(@Model.PrettyTimeSheet)
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 
