@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Dottle.Models;
 using Microsoft.EntityFrameworkCore.Internal;
+using System.Text.RegularExpressions;
 
 namespace Dottle.Controllers
 {
@@ -70,15 +71,15 @@ namespace Dottle.Controllers
             {
                 errors.Add("Error: Title can't be empty!");
             }
-
-            if (string.IsNullOrEmpty(post.PhoneNumber))
+            
+            if (IsValidPhone(post.PhoneNumber))
             {
-                errors.Add("Error: Phone number can't be empty!");
+                errors.Add("Error: Invalid phone number!");
             }
             
-            if (string.IsNullOrEmpty(post.Email))
+            if (IsValidEmail(post.Email))
             {
-                errors.Add("Error: Email can't be empty!");
+                errors.Add("Error: Invalid email address");
             }
             
             if (string.IsNullOrEmpty(post.Address))
@@ -87,6 +88,17 @@ namespace Dottle.Controllers
             }
 
             return errors;
+        }
+        public bool IsValidPhone(string Phone)
+        {
+                var r = new Regex(@"[0-9().+\s]+");
+                return r.IsMatch(Phone);
+        } 
+
+        public bool IsValidEmail(string Email)
+        {
+            var r = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            return r.IsMatch(Email);
         }
 
         private string PrettyTimeSheet(string ts)
