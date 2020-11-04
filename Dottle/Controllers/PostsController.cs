@@ -63,9 +63,21 @@ namespace Dottle.Controllers
             await db.SaveChangesAsync();
             return Json("Your post has been successfully created!");
         }
+        public async Task<JsonResult> Update(string jsonPost, int id)
+        {
+            var post = await db.Posts.FindAsync(id);
+            PostModel updatedPost = JsonConvert.DeserializeObject<PostModel>(jsonPost);
+            List<string> errors = ValidatePost(updatedPost);
 
-        
+            if (errors.Count != 0)
+            {
+                return Json(string.Join("\n", errors));
+            }
 
+            db.Posts.Update(updatedPost);
+            await db.SaveChangesAsync();
+            return Json("Your post has been successfully updated!");
+        }
         private List<string> ValidatePost(PostModel post)
         {
             List<string> errors = new List<string>();
