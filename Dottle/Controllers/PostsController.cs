@@ -64,6 +64,8 @@ namespace Dottle.Controllers
             return Json("Your post has been successfully created!");
         }
 
+        
+
         private List<string> ValidatePost(PostModel post)
         {
             List<string> errors = new List<string>();
