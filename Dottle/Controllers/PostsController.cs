@@ -45,6 +45,14 @@ namespace Dottle.Controllers
             postShow.PrettyTimeSheet = PrettyTimeSheet(post.TimeSheet);
             return View(postShow);
         }
+        public async Task<IActionResult> Edit(int id)
+        {
+            var post = await db.Posts.FindAsync(id);
+            PostEditViewModel postEdit = new PostEditViewModel();
+            postEdit.Post = post;
+            postEdit.PrettyTimeSheet = PrettyTimeSheet(post.TimeSheet);
+            return View(postEdit);
+        }
 
         [HttpPost]
         // TODO: change param to PostModel for auto-deserialization
