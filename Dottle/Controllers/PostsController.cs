@@ -47,9 +47,20 @@ namespace Dottle.Controllers
         }
         public async Task<IActionResult> Edit(int id)
         {
+            List<string> days = new List<string>
+            {
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+            };
             var post = await db.Posts.FindAsync(id);
             PostEditViewModel postEdit = new PostEditViewModel();
             postEdit.Post = post;
+            postEdit.Days = days;
             postEdit.PrettyTimeSheet = PrettyTimeSheet(post.TimeSheet);
             return View(postEdit);
         }

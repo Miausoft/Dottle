@@ -9,5 +9,6 @@ namespace Dottle.Models
     {
         public string PrettyTimeSheet;
         public PostModel Post;
+        public List<string> Days;
     }
 }

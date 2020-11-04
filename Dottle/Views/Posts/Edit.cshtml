@@ -1,33 +1,53 @@
 ﻿@model PostEditViewModel
-
-<div class="container">
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">@Model.Post.Title</h3>
-            <h6 class="card-subtitle mb-2 text-muted">@Model.Post.Description</h6>
-        </div>
-        <div class="card-body">
-            <ul class="list-group list-grou-flush">
-                <h6 class="card-title">Contacts</h6>
-                <li class="list-group-item">
-                    <div>
-                        <b>Phone number:</b> @Model.Post.PhoneNumber
-                    </div>
-                    <div>
-                        <b>Email:</b> @Model.Post.Email
-                    </div>
-                    <div>
-                        <b>Address:</b> @Model.Post.Address
-                    </div>
-                </li>
-
-                <h6 class="card-title" style="margin-top: 8px;">Working hours</h6>
-                <li class="list-group-item">
-                    <div>
-                        @Html.Raw(@Model.PrettyTimeSheet)
-                    </div>
-                </li>
-            </ul>
-            <a asp-controller="Posts" asp-action="Update" asp-route-id="@Model.Post.Id" class="btn btn-primary">Save</a>
+<div class="card">
+    <div class="card-header">
+        <h5>Editing Post</h5>
+    </div>
+    <div class="card-body">
+        <div class="container">
+            <form id="new-post-form" method="post" action="">
+                <div class="form-group">
+                    <label for="PostTitle">Title</label>
+                    <input type="text" class="form-control" id="PostTitle" placeholder="Post title" value="@Model.Post.Title">
+                </div>
+                <div class="form-group">
+                    <label for="PostPhoneNumber">Phone Number</label>
+                    <input type="text" class="form-control" id="PostPhoneNumber" placeholder="Post phone number" value="@Model.Post.PhoneNumber">
+                </div>
+                <div class="form-group">
+                    <label for="PostEmail">Email</label>
+                    <input type="text" class="form-control" id="PostEmail" placeholder="Post email" value="@Model.Post.Email">
+                </div>
+                <div class="form-group">
+                    <label for="PostAddress">Address</label>
+                    <input type="text" class="form-control" id="PostAddress" placeholder="Post address" value="@Model.Post.Address">
+                </div>
+                <div class="form-group">
+                    <label for="PostDescription">Description</label>
+                    <textarea class="form-control" rows="4" id="PostDescription" placeholder="Post description" value="@Model.Post.Description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="working-hours-label">Working Hours</label>
+                    @{
+                        foreach (string day in @Model.Days)
+                        {
+                            <div class="day-check-tuple">
+                                <div class="form-check form-day-check">
+                                    <input type="checkbox" class="form-check-input day-check-box" id=@($"{day}")>
+                                    <label class="form-check-label" for=@($"{day}")>@day</label>
+                                </div>
+                                <div hidden class="work-time-container">
+                                    <span class="time-from-label">From</span>
+                                    <input type="text" class="working-hour-from" data-format="HH:mm" data-template="HH : mm" name="datetime">
+                                    <span class="time-to-label">To</span>
+                                    <input type="text" class="working-hour-to" data-format="HH:mm" data-template="HH : mm" name="datetime">
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                <a asp-controller="Posts" asp-action="Update" asp-route-id="@Model.Post.Id" class="btn btn-primary">Update</a>
+            </form>
         </div>
     </div>
+</div>
