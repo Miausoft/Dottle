@@ -9,5 +9,9 @@ namespace Dottle.Models
     {
         public string Name;
         public bool Marked;
+        public string HourFrom;
+        public string HourTo;
+        public string MinuteFrom;
+        public string MinuteTo;
     }
 }

@@ -4,10 +4,10 @@
         <input type="checkbox" class="form-check-input day-check-box" id=@($"{@Model.Name}") @(Model.Marked ? "checked" : null)>
         <label class="form-check-label" for=@($"{@Model.Name}")>@Model.Name</label>
     </div>
-    <div hidden class="work-time-container">
+    <div class="work-time-container" @(Model.Marked ? null : "hidden")>
         <span class="time-from-label">From</span>
-        <input type="text" class="working-hour-from" data-format="HH:mm" data-template="HH : mm" name="datetime">
+        <input type="text" class="working-hour-from" data-format="HH:mm" data-template="HH : mm" name="datetime" value="@Model.HourFrom:@Model.MinuteFrom">
         <span class="time-to-label">To</span>
-        <input type="text" class="working-hour-to" data-format="HH:mm" data-template="HH : mm" name="datetime">
+        <input type="text" class="working-hour-to" data-format="HH:mm" data-template="HH : mm" name="datetime" value="@Model.HourTo:@Model.MinuteTo">
     </div>
 </div>

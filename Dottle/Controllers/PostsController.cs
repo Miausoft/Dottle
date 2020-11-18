@@ -59,16 +59,28 @@ namespace Dottle.Controllers
             };
             var post = await db.Posts.FindAsync(id);
             List<string> markedDays = new List<string>();
+            List<string> markedHourFrom = new List<string>();
+            List<string> markedHourTo = new List<string>();
+            List<string> markedMinuteFrom = new List<string>();
+            List<string> markedMinuteTo = new List<string>();
             var timeSheet = JsonConvert.DeserializeObject<List<WorkingDay>>(post.TimeSheet);
             foreach (WorkingDay day in timeSheet)
             {
                 markedDays.Add(day.DayName);
+                markedHourFrom.Add(NumberToTime(day.HourFrom));
+                markedHourTo.Add(NumberToTime(day.HourTo));
+                markedMinuteFrom.Add(NumberToTime(day.MinuteFrom));
+                markedMinuteTo.Add(NumberToTime(day.MinuteTo));
             }
             PostEditViewModel postEdit = new PostEditViewModel();
             postEdit.Post = post;
             postEdit.Days = days;
             postEdit.PrettyTimeSheet = PrettyTimeSheet(post.TimeSheet);
             postEdit.MarkedDays = markedDays;
+            postEdit.MarkedHourFrom = markedHourFrom;
+            postEdit.MarkedHourTo = markedHourTo;
+            postEdit.MarkedMinuteFrom = markedMinuteFrom;
+            postEdit.MarkedMinuteTo = markedMinuteTo;
             return View(postEdit);
         }
 
@@ -159,6 +171,7 @@ namespace Dottle.Controllers
         
         private string NumberToTime (string time)
         {
+            if (string.IsNullOrEmpty(time)) return "00";
             if (System.Int32.Parse(time) < 10) time = "0" + time;
             return time;
         }

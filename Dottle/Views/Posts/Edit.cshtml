@@ -29,9 +29,14 @@
                 <div class="form-group">
                     <label class="working-hours-label">Working Hours</label>
                     @{
-                        foreach (string day in @Model.Days)
+                        foreach (var item in @Model.Days.Select((day, i) => new { i, day }))
                         {
-                            Html.RenderPartial("_DayCheck", new DayParam { Name = day, Marked = @Model.MarkedDays.Contains(day)});
+                            Html.RenderPartial("_DayCheck", new DayParam { Name = item.day, Marked = @Model.MarkedDays.Contains(item.day),
+                                HourFrom = @Model.MarkedDays.Contains(item.day) ? @Model.MarkedHourFrom.ElementAt(@Model.MarkedDays.IndexOf(item.day)) : "0",
+                                HourTo = @Model.MarkedDays.Contains(item.day) ? @Model.MarkedHourTo.ElementAt(@Model.MarkedDays.IndexOf(item.day)) : "0",
+                                MinuteFrom = @Model.MarkedDays.Contains(item.day) ? @Model.MarkedMinuteFrom.ElementAt(@Model.MarkedDays.IndexOf(item.day)) : "0",
+                                MinuteTo = @Model.MarkedDays.Contains(item.day) ? @Model.MarkedMinuteTo.ElementAt(@Model.MarkedDays.IndexOf(item.day)) : "0"
+                            });
                         }
                     }
                 </div>

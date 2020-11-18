@@ -8,6 +8,9 @@ namespace Dottle.Models
         public PostModel Post;
         public List<string> Days;
         public List<string> MarkedDays;
-        public List<string> MarkedTime;
+        public List<string> MarkedHourTo;
+        public List<string> MarkedHourFrom;
+        public List<string> MarkedMinuteFrom;
+        public List<string> MarkedMinuteTo;
     }
 }
