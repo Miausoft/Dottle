@@ -306,3 +306,4 @@ C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\Dottle.pdb
 C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\Dottle.genruntimeconfig.cache
 C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\Dottle.csprojAssemblyReference.cache
 C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\Razor\Views\Posts\Edit.cshtml.g.cs
+C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_DayCheck.cshtml.g.cs

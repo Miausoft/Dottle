@@ -31,18 +31,7 @@
                     @{
                         foreach (string day in @Model.Days)
                         {
-                            <div class="day-check-tuple">
-                                <div class="form-check form-day-check">
-                                    <input type="checkbox" class="form-check-input day-check-box" id=@($"{day}")>
-                                    <label class="form-check-label" for=@($"{day}")>@day</label>
-                                </div>
-                                <div hidden class="work-time-container">
-                                    <span class="time-from-label">From</span>
-                                    <input type="text" class="working-hour-from" data-format="HH:mm" data-template="HH : mm" name="datetime">
-                                    <span class="time-to-label">To</span>
-                                    <input type="text" class="working-hour-to" data-format="HH:mm" data-template="HH : mm" name="datetime">
-                                </div>
-                            </div>
+                            Html.RenderPartial("_DayCheck", new { day, isChecked = @Model.MarkedDays.Contains(day)});
                         }
                     }
                 </div>

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Dottle.Models
 {
@@ -10,5 +7,7 @@ namespace Dottle.Models
         public string PrettyTimeSheet;
         public PostModel Post;
         public List<string> Days;
+        public List<string> MarkedDays;
+        public List<string> MarkedTime;
     }
 }

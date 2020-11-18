@@ -58,10 +58,17 @@ namespace Dottle.Controllers
                 "Sunday"
             };
             var post = await db.Posts.FindAsync(id);
+            List<string> markedDays = new List<string>();
+            var timeSheet = JsonConvert.DeserializeObject<List<WorkingDay>>(post.TimeSheet);
+            foreach (WorkingDay day in timeSheet)
+            {
+                markedDays.Add(day.DayName);
+            }
             PostEditViewModel postEdit = new PostEditViewModel();
             postEdit.Post = post;
             postEdit.Days = days;
             postEdit.PrettyTimeSheet = PrettyTimeSheet(post.TimeSheet);
+            postEdit.MarkedDays = markedDays;
             return View(postEdit);
         }
 
@@ -147,7 +154,6 @@ namespace Dottle.Controllers
                 sb.Append("to: " + NumberToTime(day.HourTo) + ":" + NumberToTime(day.MinuteTo) + "\n");
                 sb.Append("</div>");
             }
-
             return sb.ToString();
         }
         
