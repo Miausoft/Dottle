@@ -31,7 +31,7 @@
                     @{
                         foreach (string day in @Model.Days)
                         {
-                            Html.RenderPartial("_DayCheck", new { day, isChecked = @Model.MarkedDays.Contains(day)});
+                            Html.RenderPartial("_DayCheck", new DayParam { Name = day, Marked = @Model.MarkedDays.Contains(day)});
                         }
                     }
                 </div>

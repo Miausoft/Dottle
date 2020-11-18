@@ -1,7 +1,8 @@
-﻿<div class="day-check-tuple">
+﻿@model DayParam 
+<div class="day-check-tuple">
     <div class="form-check form-day-check">
-        <input type="checkbox" class="form-check-input day-check-box" id=@($"{@Model}") checked=@($"{@Model.isChecked}")>
-        <label class="form-check-label" for=@($"{@Model}")>@Model</label>
+        <input type="checkbox" class="form-check-input day-check-box" id=@($"{@Model.Name}") @(Model.Marked ? "checked" : null)>
+        <label class="form-check-label" for=@($"{@Model.Name}")>@Model.Name</label>
     </div>
     <div hidden class="work-time-container">
         <span class="time-from-label">From</span>
