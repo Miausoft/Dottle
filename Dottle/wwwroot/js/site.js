@@ -20,8 +20,7 @@ $(document).ready(() => {
        });
    }
    
-   const submitNewPostForm = (form) => {
-       const controllerEndpoint = '/Posts/Create';
+   const submitNewPostForm = (form, ep, method) => {
        const title = form.find('#PostTitle').prop('value');
        const phoneNumber = form.find('#PostPhoneNumber').prop('value');
        const email = form.find('#PostEmail').prop('value');
@@ -48,7 +47,6 @@ $(document).ready(() => {
            });
        });
        
-       console.log(JSON.stringify(timeSheet));
        const postModel = { jsonPost: JSON.stringify({
                Title: title,
                PhoneNumber: phoneNumber,
@@ -58,7 +56,12 @@ $(document).ready(() => {
                TimeSheet: JSON.stringify(timeSheet)}
            )
        };
-       $.post(controllerEndpoint, postModel, (resp) => alert(resp));
+       $.ajax({
+           url: ep,
+           type: method,
+           data: postModel,
+           success: (resp) => alert(resp)
+       });
    }
    
    initPostCheckBoxes();
@@ -66,7 +69,13 @@ $(document).ready(() => {
    
    $('#new-post-form').submit((e) => {
        e.preventDefault();
-       submitNewPostForm($(e.target));
+       submitNewPostForm($(e.target), '/Posts/Create', 'POST');
    })
+
+    $('#update-post-form').submit((e) => {
+        e.preventDefault();
+        const postId = $(e.target).data('post');
+        submitNewPostForm($(e.target), '/Posts/Update/' + postId, 'PUT');
+    })
    
 });

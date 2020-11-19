@@ -20,7 +20,7 @@
                         <b>Address:</b> @Model.Post.Address
                     </div>
                 </li>
-                
+
                 <h6 class="card-title" style="margin-top: 8px;">Working hours</h6>
                 <li class="list-group-item">
                     <div>
@@ -28,6 +28,7 @@
                     </div>
                 </li>
             </ul>
+            <a asp-controller="Posts" asp-action="Edit" asp-route-id="@Model.Post.Id" class="btn btn-primary">Edit</a>
         </div>
     </div>
 </div>
