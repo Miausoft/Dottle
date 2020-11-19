@@ -21,7 +21,6 @@ $(document).ready(() => {
    }
    
    const submitNewPostForm = (form, ep, method) => {
-       const controllerEndpoint = ep;
        const title = form.find('#PostTitle').prop('value');
        const phoneNumber = form.find('#PostPhoneNumber').prop('value');
        const email = form.find('#PostEmail').prop('value');
@@ -57,18 +56,12 @@ $(document).ready(() => {
                TimeSheet: JSON.stringify(timeSheet)}
            )
        };
-       console.log(postModel);
-       if(method === 'POST')
-           $.post(controllerEndpoint, postModel, (resp) => alert(resp));
-       else if(method === 'PUT')
-           $.ajax({
-               url: ep,
-               type: method,
-               data: postModel,
-               success: (resp) => alert(resp)
-           });
-       else
-           console.log('Not a method');
+       $.ajax({
+           url: ep,
+           type: method,
+           data: postModel,
+           success: (resp) => alert(resp)
+       });
    }
    
    initPostCheckBoxes();
