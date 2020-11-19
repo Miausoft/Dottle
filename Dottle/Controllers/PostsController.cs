@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Dottle.Models;
 using Microsoft.EntityFrameworkCore.Internal;
 using System.Text.RegularExpressions;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Dottle.Controllers
 {
@@ -101,9 +102,9 @@ namespace Dottle.Controllers
             await db.SaveChangesAsync();
             return Json("Your post has been successfully created!");
         }
+        [HttpPut]
         public async Task<JsonResult> Update(string jsonPost, int id)
         {
-            var post = await db.Posts.FindAsync(id);
             PostModel updatedPost = JsonConvert.DeserializeObject<PostModel>(jsonPost);
             List<string> errors = ValidatePost(updatedPost);
 
@@ -111,10 +112,15 @@ namespace Dottle.Controllers
             {
                 return Json(string.Join("\n", errors));
             }
-
-            db.Posts.Update(updatedPost);
+            var post = await db.Posts.FindAsync(id);
+            post.Title = updatedPost.Title;
+            post.PhoneNumber = updatedPost.PhoneNumber;
+            post.Email = updatedPost.Email;
+            post.Address = updatedPost.Address;
+            post.Description = updatedPost.Description;
+            post.TimeSheet = updatedPost.TimeSheet;
             await db.SaveChangesAsync();
-            return Json("Your post has been successfully updated!");
+            return Json("Post has been successfully saved!");
         }
         private List<string> ValidatePost(PostModel post)
         {
@@ -124,12 +130,12 @@ namespace Dottle.Controllers
                 errors.Add("Error: Title can't be empty!");
             }
             
-            if (IsValidPhone(post.PhoneNumber))
+            if (!IsValidPhone(post.PhoneNumber))
             {
                errors.Add("Error: Invalid phone number!");
             }
             
-            if (IsValidEmail(post.Email))
+            if (!IsValidEmail(post.Email))
             {
                 errors.Add("Error: Invalid email address");
             }
@@ -144,7 +150,7 @@ namespace Dottle.Controllers
         public bool IsValidPhone(string Phone)
         {
             var r = new Regex(@"[0-9().+\s]+");
-                return r.IsMatch(Phone) && !string.IsNullOrEmpty(Phone);
+            return r.IsMatch(Phone) && !string.IsNullOrEmpty(Phone);
         } 
 
         public bool IsValidEmail(string Email)
