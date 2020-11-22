@@ -22,7 +22,7 @@ namespace Dottle.Controllers
         }
 
         [HttpPost]
-        public async Task<ViewResult> SignUp(UserRegisterModel user)
+        public async Task<ViewResult> SignUp(UserModel user)
         {
             if (ModelState.IsValid)
             {
@@ -41,7 +41,7 @@ namespace Dottle.Controllers
         }
 
         [HttpPost]
-        public async Task<ViewResult> SignIn(UserLoginModel user)
+        public async Task<ViewResult> SignIn(UserModel user)
         {
             if (ModelState.IsValid)
             {

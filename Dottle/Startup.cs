@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Dottle.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Dottle
 {

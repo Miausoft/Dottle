@@ -23,29 +23,12 @@ namespace Dottle.Migrations
                 {
                     table.PrimaryKey("PK_Posts", x => x.Id);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    Email = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: false),
-                    Surname = table.Column<string>(nullable: false),
-                    BirthDate = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Email);
-                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Posts");
-
-            migrationBuilder.DropTable(
-                name: "Users");
         }
     }
 }

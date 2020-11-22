@@ -10,7 +10,7 @@ namespace Dottle.Models
 
         }
 
-        public DbSet<UserRegisterModel> Users { get; set; }
+        public DbSet<UserModel> Users { get; set; }
         
         public DbSet<PostModel> Posts { get; set; }
     }
