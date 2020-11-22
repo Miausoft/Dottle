@@ -13,6 +13,7 @@ namespace Dottle.Migrations
                     Name = table.Column<string>(nullable: false, maxLength: 25),
                     Surname = table.Column<string>(nullable: false),
                     PasswordHash = table.Column<string>(nullable: false),
+                    PasswordSalt = table.Column<string>(nullable: false),
                 },
                 constraints: table =>
                 {

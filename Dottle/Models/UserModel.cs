@@ -12,5 +12,7 @@ namespace Dottle.Models
         public string Surname { get; set; }
         [Required]
         public string PasswordHash { get; set; }
+        [Required]
+        public string PasswordSalt { get; set; }
     }
 }
