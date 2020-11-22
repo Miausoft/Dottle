@@ -42,7 +42,9 @@ namespace Dottle.Controllers
             UserModel newUser = new UserModel();
             newUser.Name = user.Name;
             newUser.Surname = user.Surname;
-            newUser.PasswordHash = PasswordManager.HashPassword(user.Password);
+            string salt = PasswordManager.CreateSalt();
+            newUser.PasswordHash = PasswordManager.HashPassword(user.Password, salt);
+            newUser.PasswordSalt = salt;
             await db.Users.AddAsync(newUser);
             await db.SaveChangesAsync();
             return View("SuccessSignUp", newUser);

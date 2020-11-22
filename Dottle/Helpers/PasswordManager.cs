@@ -7,9 +7,8 @@ namespace Dottle.Helpers
     public class PasswordManager
     {
         private const int SALT_SIZE = 32;
-        public static string HashPassword(string password)
+        public static string HashPassword(string password, string salt)
         {
-            string salt = CreateSalt();
             SHA256 sha = SHA256.Create();
             byte[] bytes = sha.ComputeHash(Encoding.ASCII.GetBytes(password + salt));
             
@@ -22,14 +21,14 @@ namespace Dottle.Helpers
             return hashed.ToString();
         }
         
-        public static bool VerifyHashedPassword(string input, string hash)
+        public static bool VerifyHashedPassword(string input, string hash, string salt)
         {
-            var hashOfInput = HashPassword(input);
+            var hashOfInput = HashPassword(input, salt);
             StringComparer comparer = StringComparer.OrdinalIgnoreCase;
             return comparer.Compare(hashOfInput, hash) == 0;
         }
 
-        private static string CreateSalt()
+        public static string CreateSalt()
         {
             RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
             byte[] buff = new byte[SALT_SIZE];
