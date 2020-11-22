@@ -309,4 +309,5 @@ C:/Users/nenar/dottle/Dottle/obj/Debug/netcoreapp3.1/Razor/Views/Posts/Edit.csht
 C:/Users/nenar/dottle/Dottle/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_DayCheck.cshtml.g.cs
 /Users/valdas/Projects/Dottle/Dottle/obj/Debug/netcoreapp3.1/Razor/Views/Posts/Edit.cshtml.g.cs
 /Users/valdas/Projects/Dottle/Dottle/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_DayCheck.cshtml.g.cs
-/Users/valdas/Projects/Dottle/Dottle/obj/Debug/netcoreapp3.1/Razor/Views/Auth/Success.cshtml.g.cs
+/Users/valdas/Projects/Dottle/Dottle/obj/Debug/netcoreapp3.1/Razor/Views/Auth/SuccessSignIn.cshtml.g.cs
+/Users/valdas/Projects/Dottle/Dottle/obj/Debug/netcoreapp3.1/Razor/Views/Auth/SuccessSignUp.cshtml.g.cs

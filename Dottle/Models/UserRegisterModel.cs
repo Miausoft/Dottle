@@ -4,11 +4,11 @@ namespace Dottle.Models
 {
     public class UserRegisterModel
     {
-        [Required(ErrorMessage = "Please enter your name")]
+        [Required]
         public string Name { get; set; }
-        [Required(ErrorMessage = "Please enter your surname")]
+        [Required]
         public string Surname { get; set; }
-        [Required(ErrorMessage = "Please enter your password")]
+        [Required]
         public string Password { get; set; }
 
     }

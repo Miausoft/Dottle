@@ -28,17 +28,24 @@ namespace Dottle.Controllers
         [HttpPost]
         public async Task<ViewResult> SignUp(UserRegisterModel user)
         {
-            if (ModelState.IsValid)
+            var search = db.Users.FindAsync(user.Name);
+            if (search.Result != null)
             {
-                UserModel newUser = new UserModel();
-                newUser.Name = user.Name;
-                newUser.Surname = user.Surname;
-                newUser.PasswordHash = PasswordManager.HashPassword(user.Password);
-                await db.Users.AddAsync(newUser);
-                await db.SaveChangesAsync();
-                return View("Success", newUser);
+                ModelState.AddModelError("Name", "Such user already exists!");
             }
-            return View();
+
+            if (!ModelState.IsValid)
+            {
+                return View(user);
+            }
+
+            UserModel newUser = new UserModel();
+            newUser.Name = user.Name;
+            newUser.Surname = user.Surname;
+            newUser.PasswordHash = PasswordManager.HashPassword(user.Password);
+            await db.Users.AddAsync(newUser);
+            await db.SaveChangesAsync();
+            return View("SuccessSignUp", newUser);
         }
 
         [HttpGet]
@@ -48,17 +55,29 @@ namespace Dottle.Controllers
         }
 
         [HttpPost]
-        public async Task<ViewResult> SignIn(UserModel user)
+        public async Task<ViewResult> SignIn(UserRegisterModel user)
         {
             if (ModelState.IsValid)
             {
-                //var response = await db.Users.FindAsync(user.Email);
-                //if (response != null) return View("LoggedIn");
+                var storedUser = await db.Users.FindAsync(user.Name);
+                if (storedUser != null)
+                {
+                    string hashedPassword = PasswordManager.HashPassword(user.Password);
+                    if (PasswordManager.VerifyHashedPassword(storedUser.PasswordHash, hashedPassword))
+                    {
+                        return View("SuccessSignIn", storedUser);
+                    }
+                    ModelState.AddModelError("Password", "Invalid password.");
+                }
+                else
+                {
+                    ModelState.AddModelError("Name", "No such user.");
+                }
                 return View("SignIn");
             }
             else
             {
-                return View();
+                return View("SignIn", user);
             }
         }
 
