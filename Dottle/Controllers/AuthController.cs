@@ -1,6 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
+using System.Text;
 using Dottle.Models;
 
 namespace Dottle.Controllers
@@ -22,14 +24,18 @@ namespace Dottle.Controllers
         }
 
         [HttpPost]
-        public async Task<ViewResult> SignUp(UserModel user)
+        public async Task<ViewResult> SignUp(UserRegisterModel user)
         {
             if (ModelState.IsValid)
             {
-                await db.Users.AddAsync(user);
+                UserModel newUser = new UserModel();
+                newUser.Name = user.Name;
+                newUser.Surname = user.Surname;
+                newUser.PasswordHash = HashPassword(user.Password);
+                await db.Users.AddAsync(newUser);
                 await db.SaveChangesAsync();
-                var allUsers = await db.Users.ToListAsync();
-                //return View("Thanks", allUsers);
+                //var allUsers = await db.Users.ToListAsync();
+                return View("Success", newUser);
             }
             return View();
         }
@@ -53,6 +59,13 @@ namespace Dottle.Controllers
             {
                 return View();
             }
+        }
+
+        private string HashPassword(string password)
+        {
+            HashAlgorithm sha = SHA256.Create();
+            byte[] hashed = sha.ComputeHash(Encoding.ASCII.GetBytes(password));
+            return Encoding.ASCII.GetString(hashed);
         }
 
     }
