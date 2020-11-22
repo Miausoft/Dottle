@@ -57,28 +57,20 @@ namespace Dottle.Controllers
         [HttpPost]
         public async Task<ViewResult> SignIn(UserRegisterModel user)
         {
-            if (ModelState.IsValid)
+            var storedUser = await db.Users.FindAsync(user.Name);
+            if (storedUser != null)
             {
-                var storedUser = await db.Users.FindAsync(user.Name);
-                if (storedUser != null)
+                if (PasswordManager.VerifyHashedPassword(user.Password, storedUser.PasswordHash))
                 {
-                    string hashedPassword = PasswordManager.HashPassword(user.Password);
-                    if (PasswordManager.VerifyHashedPassword(storedUser.PasswordHash, hashedPassword))
-                    {
-                        return View("SuccessSignIn", storedUser);
-                    }
-                    ModelState.AddModelError("Password", "Invalid password.");
+                    return View("SuccessSignIn", storedUser);
                 }
-                else
-                {
-                    ModelState.AddModelError("Name", "No such user.");
-                }
-                return View("SignIn");
+                ModelState.AddModelError("Password", "Invalid password!");
             }
             else
             {
-                return View("SignIn", user);
+                ModelState.AddModelError("Name", "No such user!");
             }
+            return !ModelState.IsValid ? View(user) : View("SuccessSignIn", storedUser);
         }
 
     }
