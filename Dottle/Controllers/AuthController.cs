@@ -62,7 +62,7 @@ namespace Dottle.Controllers
             var storedUser = await db.Users.FindAsync(user.Name);
             if (storedUser != null)
             {
-                if (PasswordManager.VerifyHashedPassword(user.Password, storedUser.PasswordHash))
+                if (PasswordManager.VerifyHashedPassword(user.Password, storedUser.PasswordHash, storedUser.PasswordSalt))
                 {
                     return View("SuccessSignIn", storedUser);
                 }
