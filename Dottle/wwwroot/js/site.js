@@ -1,6 +1,10 @@
 ﻿// https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 
 $(document).ready(() => {
+    $('[data-confirm]').click(() => {​​​​​​​​
+    if (!confirm($(this).prop("data-confirm")))
+        e.preventDefault();
+    });
    const initPostCheckBoxes = () => {
        const dayCheckBoxes = $('.day-check-box');
        $.each(dayCheckBoxes, (id, el) => {

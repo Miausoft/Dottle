@@ -9,6 +9,7 @@ using Dottle.Models;
 using Microsoft.EntityFrameworkCore.Internal;
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore.Storage;
+using System.Linq;
 
 namespace Dottle.Controllers
 {
@@ -46,6 +47,15 @@ namespace Dottle.Controllers
             postShow.PrettyTimeSheet = PrettyTimeSheet(post.TimeSheet);
             return View(postShow);
         }
+        
+        public async Task<RedirectResult> Delete(int id)
+        {
+            PostModel post = db.Posts.First(x => x.Id == id);
+            db.Posts.Remove(post);
+            await db.SaveChangesAsync();
+            return new RedirectResult(url:"/", permanent: true);
+        }
+
         public async Task<IActionResult> Edit(int id)
         {
             List<string> days = new List<string>

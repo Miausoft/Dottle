@@ -19,6 +19,14 @@ a.navbar-brand {
     display: inline-block;
 }
 
+.action-container {
+    margin-top: 12px;
+}
+
+.card-title {
+    margin-top: 8px;
+}
+
 .combodate {
     margin-right: 16px;
 }
