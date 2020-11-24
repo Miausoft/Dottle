@@ -50,10 +50,10 @@ namespace Dottle.Controllers
         
         public async Task<RedirectResult> Delete(int id)
         {
-            PostModel post = db.Posts.First(x => x.Id == id);
-            db.Posts.Remove(post);
+            var post = await db.Posts.FindAsync(id);
+            db.Remove(post);
             await db.SaveChangesAsync();
-            return new RedirectResult(url:"/", permanent: true);
+            return new RedirectResult(url: "/", permanent: true);
         }
 
         public async Task<IActionResult> Edit(int id)
