@@ -69,29 +69,23 @@ namespace Dottle.Controllers
                 "Sunday"
             };
             var post = await db.Posts.FindAsync(id);
-            List<string> markedDays = new List<string>();
-            List<string> markedHourFrom = new List<string>();
-            List<string> markedHourTo = new List<string>();
-            List<string> markedMinuteFrom = new List<string>();
-            List<string> markedMinuteTo = new List<string>();
+            List<WorkingDay> markedTimes = new List<WorkingDay>();
             var timeSheet = JsonConvert.DeserializeObject<List<WorkingDay>>(post.TimeSheet);
             foreach (WorkingDay day in timeSheet)
             {
-                markedDays.Add(day.DayName);
-                markedHourFrom.Add(NumberToTime(day.HourFrom));
-                markedHourTo.Add(NumberToTime(day.HourTo));
-                markedMinuteFrom.Add(NumberToTime(day.MinuteFrom));
-                markedMinuteTo.Add(NumberToTime(day.MinuteTo));
+                var marked = new WorkingDay();
+                marked.DayName = day.DayName;
+                marked.HourFrom = NumberToTime(day.HourFrom);
+                marked.HourTo = NumberToTime(day.HourTo);
+                marked.MinuteFrom = NumberToTime(day.MinuteFrom);
+                marked.MinuteTo = NumberToTime(day.MinuteTo);
+                markedTimes.Add(marked);
             }
             PostEditViewModel postEdit = new PostEditViewModel();
             postEdit.Post = post;
             postEdit.Days = days;
             postEdit.PrettyTimeSheet = PrettyTimeSheet(post.TimeSheet);
-            postEdit.MarkedDays = markedDays;
-            postEdit.MarkedHourFrom = markedHourFrom;
-            postEdit.MarkedHourTo = markedHourTo;
-            postEdit.MarkedMinuteFrom = markedMinuteFrom;
-            postEdit.MarkedMinuteTo = markedMinuteTo;
+            postEdit.MarkedTimes = markedTimes;
             return View(postEdit);
         }
 

@@ -1,4 +1,5 @@
 ﻿@model PostEditViewModel
+@using Dottle.Helpers
 <div class="card">
     <div class="card-header">
         <h5>Editing Post</h5>
@@ -31,12 +32,7 @@
                     @{
                         foreach (var item in @Model.Days.Select((day, i) => new { i, day }))
                         {
-                            Html.RenderPartial("_DayCheck", new DayParam { Name = item.day, Marked = @Model.MarkedDays.Contains(item.day),
-                                HourFrom = @Model.MarkedDays.Contains(item.day) ? @Model.MarkedHourFrom.ElementAt(@Model.MarkedDays.IndexOf(item.day)) : "0",
-                                HourTo = @Model.MarkedDays.Contains(item.day) ? @Model.MarkedHourTo.ElementAt(@Model.MarkedDays.IndexOf(item.day)) : "0",
-                                MinuteFrom = @Model.MarkedDays.Contains(item.day) ? @Model.MarkedMinuteFrom.ElementAt(@Model.MarkedDays.IndexOf(item.day)) : "0",
-                                MinuteTo = @Model.MarkedDays.Contains(item.day) ? @Model.MarkedMinuteTo.ElementAt(@Model.MarkedDays.IndexOf(item.day)) : "0"
-                            });
+                            Html.RenderPartial("_DayCheck", MarkedDayHelper.generateDayParam(item.i, item.day, @Model.MarkedTimes));
                         }
                     }
                 </div>
