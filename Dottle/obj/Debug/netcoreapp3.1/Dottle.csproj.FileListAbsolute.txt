@@ -312,3 +312,4 @@ C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\Dottle.csproj.CopyComplete
 C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\staticwebassets\Dottle.StaticWebAssets.Manifest.cache
 C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\staticwebassets\Dottle.StaticWebAssets.xml
 C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\Dottle.genruntimeconfig.cache
+C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\Dottle.csprojAssemblyReference.cache
