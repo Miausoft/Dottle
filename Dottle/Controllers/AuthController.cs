@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Dottle.Helpers;
 using Dottle.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Dottle.Controllers
 {
@@ -64,6 +65,7 @@ namespace Dottle.Controllers
             {
                 if (PasswordManager.VerifyHashedPassword(user.Password, storedUser.PasswordHash, storedUser.PasswordSalt))
                 {
+                    HttpContext.Session.SetString("User", storedUser.Name);
                     return View("SuccessSignIn", storedUser);
                 }
                 ModelState.AddModelError("Password", "Invalid password!");
@@ -73,6 +75,13 @@ namespace Dottle.Controllers
                 ModelState.AddModelError("Name", "No such user!");
             }
             return !ModelState.IsValid ? View(user) : View("SuccessSignIn", storedUser);
+        }
+
+        [HttpPost]
+        public ViewResult SignOut()
+        {
+            HttpContext.Session.SetString("User", null);
+            return View("SignIn");
         }
 
     }
