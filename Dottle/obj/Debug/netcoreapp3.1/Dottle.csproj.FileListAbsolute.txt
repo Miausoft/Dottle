@@ -314,3 +314,5 @@ C:/Users/nenar/dottle/Dottle/obj/Debug/netcoreapp3.1/staticwebassets/Dottle.Stat
 C:/Users/nenar/dottle/Dottle/obj/Debug/netcoreapp3.1/Dottle.genruntimeconfig.cache
 C:/Users/nenar/dottle/Dottle/obj/Debug/netcoreapp3.1/Dottle.csprojAssemblyReference.cache
 /Users/valdas/Projects/Dottle/Dottle/obj/Debug/netcoreapp3.1/Razor/Views/Auth/SignOut.cshtml.g.cs
+/Users/valdas/Projects/Dottle/Dottle/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Head.cshtml.g.cs
+/Users/valdas/Projects/Dottle/Dottle/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Navbar.cshtml.g.cs
