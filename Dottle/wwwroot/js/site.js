@@ -1,7 +1,6 @@
 ﻿// https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 
 $(document).ready(() => {
-   
    const initPostCheckBoxes = () => {
        const dayCheckBoxes = $('.day-check-box');
        $.each(dayCheckBoxes, (id, el) => {
