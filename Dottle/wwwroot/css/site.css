@@ -7,8 +7,20 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+.post-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
 .post-entry {
-    margin-bottom: 12px;
+    margin: 8px;
+    flex: 1 1 33.333333%;
+    box-shadow:
+        0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048);
+    
 }
 .form-day-check {
     width: 15%;

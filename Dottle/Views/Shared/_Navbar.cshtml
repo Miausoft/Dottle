@@ -36,6 +36,9 @@
                         else
                         {
                             <li class="nav-item">
+                                <span class="nav-link text-dark">Hi there, @Context.Session.GetString("User")!</span>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" asp-controller="Auth" asp-action="SignOut">Sign Out</a>
                             </li>
                         }
