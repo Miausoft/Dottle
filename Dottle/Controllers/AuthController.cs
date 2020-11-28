@@ -77,11 +77,11 @@ namespace Dottle.Controllers
             return !ModelState.IsValid ? View(user) : View("SuccessSignIn", storedUser);
         }
 
-        [HttpPost]
+        [HttpGet]
         public ViewResult SignOut()
         {
-            HttpContext.Session.SetString("User", null);
-            return View("SignIn");
+            HttpContext.Session.Clear();
+            return View("SignOut");
         }
 
     }
