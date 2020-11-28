@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore.Internal;
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore.Storage;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
 
 namespace Dottle.Controllers
 {
@@ -94,6 +95,7 @@ namespace Dottle.Controllers
         public async Task<JsonResult> Create(string jsonPost)
         {
             PostModel post = JsonConvert.DeserializeObject<PostModel>(jsonPost);
+            post.UserId = HttpContext.Session.GetString("User");
             List<string> errors = ValidatePost(post);
             
             if (errors.Count != 0)

@@ -26,6 +26,8 @@ namespace Dottle.Models
 
         [Required(ErrorMessage = "Select working hours")]
         public string TimeSheet { get; set; }
+        [Required]
+        public string UserId { get; set; }
 
     }
 }
