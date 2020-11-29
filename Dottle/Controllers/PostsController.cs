@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using Microsoft.EntityFrameworkCore.Internal;
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore.Storage;
 using System.Linq;
+using Dottle.Helpers;
 using Microsoft.AspNetCore.Http;
 
 namespace Dottle.Controllers
@@ -24,20 +26,11 @@ namespace Dottle.Controllers
             this.db = db;
         }
         
+       
+        
         public IActionResult New()
         {
-            List<string> days = new List<string>
-            {
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday"
-            };
-
-            return View(days);
+            return View(DayHelper.Days);
         }
 
         public async Task<IActionResult> Show(int id)
@@ -59,16 +52,6 @@ namespace Dottle.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            List<string> days = new List<string>
-            {
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday"
-            };
             var post = await db.Posts.FindAsync(id);
             List<WorkingDay> markedTimes = new List<WorkingDay>();
             var timeSheet = JsonConvert.DeserializeObject<List<WorkingDay>>(post.TimeSheet);
@@ -84,7 +67,7 @@ namespace Dottle.Controllers
             }
             PostEditViewModel postEdit = new PostEditViewModel();
             postEdit.Post = post;
-            postEdit.Days = days;
+            postEdit.Days = DayHelper.Days;
             postEdit.PrettyTimeSheet = PrettyTimeSheet(post.TimeSheet);
             postEdit.MarkedTimes = markedTimes;
             return View(postEdit);
