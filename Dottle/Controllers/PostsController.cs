@@ -152,9 +152,8 @@ namespace Dottle.Controllers
         {
             StringBuilder sb = new StringBuilder("");
             var timeSheet = JsonConvert.DeserializeObject<List<WorkingDay>>(ts);
-            foreach (WorkingDay day in timeSheet)
+            foreach (var day in timeSheet.Where(day => !string.IsNullOrEmpty(day.DayName)))
             {
-                if (string.IsNullOrEmpty(day.DayName)) continue;
                 sb.Append("<div>");
                 sb.Append(day.DayName + " - ");
                 sb.Append("from: " + NumberToTime(day.HourFrom) + ":" + NumberToTime(day.MinuteFrom) + " ");
@@ -167,7 +166,7 @@ namespace Dottle.Controllers
         private string NumberToTime (string time)
         {
             if (string.IsNullOrEmpty(time)) return "00";
-            if (System.Int32.Parse(time) < 10) time = "0" + time;
+            if (Int32.Parse(time) < 10) time = "0" + time;
             return time;
         }
 
