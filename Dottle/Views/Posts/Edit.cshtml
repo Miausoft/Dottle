@@ -32,7 +32,7 @@
                     @{
                         foreach (var item in @Model.Days.Select((day, i) => new { i, day }))
                         {
-                            Html.RenderPartial("_DayCheck", MarkedDayHelper.generateDayParam(item.i, item.day, @Model.MarkedTimes));
+                            Html.RenderPartial("_DayCheck", MarkedDayHelper.GenerateDayParam(item.i, item.day, @Model.MarkedTimes));
                         }
                     }
                 </div>
