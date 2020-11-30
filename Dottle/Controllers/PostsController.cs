@@ -165,8 +165,17 @@ namespace Dottle.Controllers
         
         private string NumberToTime (string time)
         {
-            if (string.IsNullOrEmpty(time)) return "00";
-            if (Int32.Parse(time) < 10) time = "0" + time;
+            try
+            {
+                int timeInt = Int32.Parse(time);
+                if (Int32.Parse(time) < 10) time = "0" + time;
+            }
+            catch (Exception e) 
+            {
+                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("Error occured parsing time - defaulting to zero");
+                time = "00";
+            }
             return time;
         }
 
