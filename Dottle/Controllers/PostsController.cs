@@ -49,21 +49,26 @@ namespace Dottle.Controllers
             await db.SaveChangesAsync();
             return new RedirectResult(url: "/", permanent: true);
         }
-
+        public delegate WorkingDay ConstructMarkedDay(WorkingDay day);
         public async Task<IActionResult> Edit(int id)
         {
             var post = await db.Posts.FindAsync(id);
             List<WorkingDay> markedTimes = new List<WorkingDay>();
             var timeSheet = JsonConvert.DeserializeObject<List<WorkingDay>>(post.TimeSheet);
+            ConstructMarkedDay constructor = delegate (WorkingDay day)
+            {
+                return new WorkingDay 
+                { 
+                    DayName = day.DayName, 
+                    HourFrom = NumberToTime(day.HourFrom),
+                    HourTo = NumberToTime(day.HourTo),
+                    MinuteFrom = NumberToTime(day.MinuteFrom),
+                    MinuteTo = NumberToTime(day.MinuteTo)
+                };
+            };
             foreach (WorkingDay day in timeSheet)
             {
-                var marked = new WorkingDay();
-                marked.DayName = day.DayName;
-                marked.HourFrom = NumberToTime(day.HourFrom);
-                marked.HourTo = NumberToTime(day.HourTo);
-                marked.MinuteFrom = NumberToTime(day.MinuteFrom);
-                marked.MinuteTo = NumberToTime(day.MinuteTo);
-                markedTimes.Add(marked);
+                markedTimes.Add(constructor(day));
             }
             PostEditViewModel postEdit = new PostEditViewModel();
             postEdit.Post = post;
@@ -141,6 +146,7 @@ namespace Dottle.Controllers
             var r = new Regex(@"[0-9().+\s]+");
             return r.IsMatch(Phone) && !string.IsNullOrEmpty(Phone);
         }
+
         Func<string, bool> IsValidEmail = delegate (string Email) 
         {
             var r = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
