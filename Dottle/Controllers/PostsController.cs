@@ -140,13 +140,12 @@ namespace Dottle.Controllers
         {
             var r = new Regex(@"[0-9().+\s]+");
             return r.IsMatch(Phone) && !string.IsNullOrEmpty(Phone);
-        } 
-
-        public bool IsValidEmail(string Email)
+        }
+        Func<string, bool> IsValidEmail = delegate (string Email) 
         {
             var r = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-            return r.IsMatch(Email) && !string.IsNullOrEmpty(Email);
-        }
+            return r.IsMatch(Email) && !string.IsNullOrEmpty(Email); 
+        };
 
         private string PrettyTimeSheet(string ts)
         {
@@ -162,7 +161,6 @@ namespace Dottle.Controllers
             }
             return sb.ToString();
         }
-        
         private string NumberToTime (string time)
         {
             try
