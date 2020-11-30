@@ -7,15 +7,22 @@ a.navbar-brand {
   word-break: break-all;
 }
 
-.post-container {
+.post-container-flexed {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;  
 }
 
+.post-container {
+    display: block;
+}
+
+.post-container-flexed .post-entry {
+    flex: 1 1 33.333333%;
+}
+
 .post-entry {
     margin: 8px;
-    flex: 1 1 33.333333%;
     box-shadow:
         0 2.8px 2.2px rgba(0, 0, 0, 0.034),
         0 6.7px 5.3px rgba(0, 0, 0, 0.048);
