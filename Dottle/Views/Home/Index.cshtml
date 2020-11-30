@@ -11,7 +11,7 @@
         @{
             foreach (PostModel post in @Model) 
             {
-                Html.RenderPartial("_Post", post);
+                Html.RenderPartialAsync("_Post", post);
             }
         }
     </div>
