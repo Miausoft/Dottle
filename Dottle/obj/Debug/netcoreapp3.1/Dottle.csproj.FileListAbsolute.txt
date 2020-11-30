@@ -319,3 +319,4 @@ C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\Dottle.dll
 C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\Dottle.pdb
 C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\Dottle.genruntimeconfig.cache
 C:\Users\nenar\dottle\Dottle\obj\Debug\netcoreapp3.1\Dottle.csprojAssemblyReference.cache
+C:\Users\nenar\dottle\Dottle\bin\Debug\netcoreapp3.1\usersettings.json

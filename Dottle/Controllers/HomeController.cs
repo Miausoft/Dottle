@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Dottle.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Dottle.Controllers
 {
@@ -13,11 +14,13 @@ namespace Dottle.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private ServiceDbContext db;
+        private readonly IConfiguration _config;
 
-        public HomeController(ILogger<HomeController> logger, ServiceDbContext db)
+        public HomeController(ILogger<HomeController> logger, ServiceDbContext db, IConfiguration config)
         {
             this.db = db;
             _logger = logger;
+            _config = config;
         }
 
         public async Task<IActionResult> Index()
