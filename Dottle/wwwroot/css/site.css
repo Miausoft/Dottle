@@ -13,6 +13,10 @@ a.navbar-brand {
     flex-wrap: wrap;  
 }
 
+.settings-submit-btn {
+    margin-top: 15px;
+}
+
 .post-container {
     display: block;
 }

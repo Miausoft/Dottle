@@ -31,9 +31,16 @@ namespace Dottle.Controllers
             return View(posts);
         }
 
+        [HttpPost]
+        public RedirectResult UpdateSettings(ViewModels.UserSetting data)
+        {
+            _config["UserConfig:SiteLayout"] = data.SiteLayout;
+            return new RedirectResult(url: "/", permanent: true);
+        }
         public IActionResult Settings()
         {
-            return View();
+            ViewModels.UserSetting uc = new ViewModels.UserSetting { SiteLayout = _config["UserConfig:SiteLayout"] };
+            return View("Settings", uc);
         }
 
         public IActionResult Privacy()
