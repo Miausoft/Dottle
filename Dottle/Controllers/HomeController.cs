@@ -25,8 +25,7 @@ namespace Dottle.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //var layoutPreference = _config["UserSettings:SitePreferences:SiteLayout"];
-            var layoutPreference = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("UserConfig")["SiteLayout"];
+            var layoutPreference = _config["UserConfig:SiteLayout"];
             ViewBag.PostLayout = layoutPreference;
             var posts = await db.Posts.ToListAsync();
             return View(posts);
