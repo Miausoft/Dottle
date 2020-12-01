@@ -1,0 +1,31 @@
+﻿<h1>User Site Preferences</h1>
+<p class=“lead”>Post index layout setting: </p>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="flexedRadio" id="flexedRadio" value="flexed" checked>
+    <label class="form-check-label" for="flexedRadio">
+        Compact
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="listRadio" id="listRadio" value="list">
+    <label class="form-check-label" for="listRadio">
+        List
+    </label>
+</div>
+
+<h1>User Site Preferences</h1>
+<p class=“lead”>Post index layout setting: </p>
+    <div class="container box">
+        <form asp-action="UpdateSettings" method="post">
+            <div class="form-group">
+                <label asp-for="Name">Name</label>
+                <input asp-for="Name" class="form-control">
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">Password</label>
+                <input asp-for="Password" type="password" class="form-control">
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+        </form>
+    </div>

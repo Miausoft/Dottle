@@ -31,6 +31,11 @@ namespace Dottle.Controllers
             return View(posts);
         }
 
+        public IActionResult Settings()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
