@@ -53,28 +53,23 @@ namespace Dottle.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             var post = await db.Posts.FindAsync(id);
-            List<WorkingDay> markedTimes = new List<WorkingDay>();
             var timeSheet = JsonConvert.DeserializeObject<List<WorkingDay>>(post.TimeSheet);
-            ConstructMarkedDay constructor = delegate (WorkingDay day)
+            ConstructMarkedDay constructor = day => new WorkingDay
             {
-                return new WorkingDay 
-                { 
-                    DayName = day.DayName, 
-                    HourFrom = NumberToTime(day.HourFrom),
-                    HourTo = NumberToTime(day.HourTo),
-                    MinuteFrom = NumberToTime(day.MinuteFrom),
-                    MinuteTo = NumberToTime(day.MinuteTo)
-                };
+                DayName = day.DayName,
+                HourFrom = NumberToTime(day.HourFrom),
+                HourTo = NumberToTime(day.HourTo),
+                MinuteFrom = NumberToTime(day.MinuteFrom),
+                MinuteTo = NumberToTime(day.MinuteTo)
             };
-            foreach (WorkingDay day in timeSheet)
+            List<WorkingDay> markedTimes = timeSheet.Select(day => constructor(day)).ToList();
+            PostEditViewModel postEdit = new PostEditViewModel
             {
-                markedTimes.Add(constructor(day));
-            }
-            PostEditViewModel postEdit = new PostEditViewModel();
-            postEdit.Post = post;
-            postEdit.Days = DayHelper.Days;
-            postEdit.PrettyTimeSheet = PrettyTimeSheet(post.TimeSheet);
-            postEdit.MarkedTimes = markedTimes;
+                Post = post,
+                Days = DayHelper.Days,
+                PrettyTimeSheet = PrettyTimeSheet(post.TimeSheet),
+                MarkedTimes = markedTimes
+            };
             return View(postEdit);
         }
 
