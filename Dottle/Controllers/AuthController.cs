@@ -16,6 +16,9 @@ namespace Dottle.Controllers
         public ServiceDbContext db;
         private bool AllowedToAuthenticate = true;
         private Authenticator authenticator;
+        
+        
+       
 
         public AuthController(ServiceDbContext db)
         {
@@ -78,6 +81,12 @@ namespace Dottle.Controllers
                     if (AllowedToAuthenticate)
                     {
                         HttpContext.Session.SetString("User", storedUser.Name);
+                        Auditor a = new Auditor();
+                        a.OnAudit += new Auditor.SignInHandler(delegate(object a, AuditArgs b)
+                        {
+                            Console.WriteLine(b.Message);
+                        });
+                        a.Message = storedUser.Name;
                         return View("SuccessSignIn", storedUser);
                     }
 
