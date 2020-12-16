@@ -14,10 +14,18 @@ namespace Dottle.Controllers
     {
 
         public ServiceDbContext db;
+        private bool AllowedToAuthenticate = true;
+        private Authenticator authenticator;
+        
+        
+       
 
         public AuthController(ServiceDbContext db)
         {
             this.db = db;
+            this.authenticator = new Authenticator(5);
+            this.authenticator.ThresholdReached += s_AttemptsReached;
+            this.AllowedToAuthenticate = true;
         }
 
         [HttpGet]
@@ -60,13 +68,28 @@ namespace Dottle.Controllers
         [HttpPost]
         public async Task<ViewResult> SignIn(UserRegisterModel user)
         {
+            int? attempts = HttpContext.Session.GetInt32("s_attempts");
+            if (attempts.HasValue)
+                authenticator.total = attempts.Value;
+            else
+                authenticator.total = 0;
             var storedUser = await db.Users.FindAsync(user.Name);
             if (storedUser != null)
             {
-                if (PasswordManager.VerifyHashedPassword(user.Password, storedUser.PasswordHash, storedUser.PasswordSalt))
+                if (authenticator.Authenticate(user.Password, storedUser.PasswordHash, storedUser.PasswordSalt))
                 {
-                    HttpContext.Session.SetString("User", storedUser.Name);
-                    return View("SuccessSignIn", storedUser);
+                    if (AllowedToAuthenticate)
+                    {
+                        HttpContext.Session.SetString("User", storedUser.Name);
+                        Auditor a = new Auditor();
+                        a.OnAudit += new Auditor.SignInHandler(delegate(object a, AuditArgs b)
+                        {
+                            Console.WriteLine(b.Message);
+                        });
+                        a.Message = storedUser.Name;
+                        return View("SuccessSignIn", storedUser);
+                    }
+
                 }
                 ModelState.AddModelError("Password", "Invalid password!");
             }
@@ -74,6 +97,8 @@ namespace Dottle.Controllers
             {
                 ModelState.AddModelError("Name", "No such user!");
             }
+            if (!AllowedToAuthenticate) return View("Disabled");
+            HttpContext.Session.SetInt32("s_attempts", authenticator.total);
             return !ModelState.IsValid ? View(user) : View("SuccessSignIn", storedUser);
         }
 
@@ -82,6 +107,13 @@ namespace Dottle.Controllers
         {
             HttpContext.Session.Clear();
             return View("SignOut");
+        }
+
+
+        private void s_AttemptsReached(object sender, EventArgs e)
+        {
+            Console.WriteLine("User has reached maximum sign in attempts");
+            this.AllowedToAuthenticate = false;
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using Microsoft.EntityFrameworkCore.Internal;
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore.Storage;
 using System.Linq;
+using Dottle.Helpers;
 using Microsoft.AspNetCore.Http;
 
 namespace Dottle.Controllers
@@ -24,20 +26,11 @@ namespace Dottle.Controllers
             this.db = db;
         }
         
+       
+        
         public IActionResult New()
         {
-            List<string> days = new List<string>
-            {
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday"
-            };
-
-            return View(days);
+            return View(DayHelper.Days);
         }
 
         public async Task<IActionResult> Show(int id)
@@ -56,42 +49,31 @@ namespace Dottle.Controllers
             await db.SaveChangesAsync();
             return new RedirectResult(url: "/", permanent: true);
         }
-
+        public delegate WorkingDay ConstructMarkedDay(WorkingDay day);
         public async Task<IActionResult> Edit(int id)
         {
-            List<string> days = new List<string>
-            {
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday"
-            };
             var post = await db.Posts.FindAsync(id);
-            List<WorkingDay> markedTimes = new List<WorkingDay>();
             var timeSheet = JsonConvert.DeserializeObject<List<WorkingDay>>(post.TimeSheet);
-            foreach (WorkingDay day in timeSheet)
+            ConstructMarkedDay constructor = day => new WorkingDay
             {
-                var marked = new WorkingDay();
-                marked.DayName = day.DayName;
-                marked.HourFrom = NumberToTime(day.HourFrom);
-                marked.HourTo = NumberToTime(day.HourTo);
-                marked.MinuteFrom = NumberToTime(day.MinuteFrom);
-                marked.MinuteTo = NumberToTime(day.MinuteTo);
-                markedTimes.Add(marked);
-            }
-            PostEditViewModel postEdit = new PostEditViewModel();
-            postEdit.Post = post;
-            postEdit.Days = days;
-            postEdit.PrettyTimeSheet = PrettyTimeSheet(post.TimeSheet);
-            postEdit.MarkedTimes = markedTimes;
+                DayName = day.DayName,
+                HourFrom = NumberToTime(day.HourFrom),
+                HourTo = NumberToTime(day.HourTo),
+                MinuteFrom = NumberToTime(day.MinuteFrom),
+                MinuteTo = NumberToTime(day.MinuteTo)
+            };
+            List<WorkingDay> markedTimes = timeSheet.Select(day => constructor(day)).ToList();
+            PostEditViewModel postEdit = new PostEditViewModel
+            {
+                Post = post,
+                Days = DayHelper.Days,
+                PrettyTimeSheet = PrettyTimeSheet(post.TimeSheet),
+                MarkedTimes = markedTimes
+            };
             return View(postEdit);
         }
 
         [HttpPost]
-        // TODO: change param to PostModel for auto-deserialization
         public async Task<JsonResult> Create(string jsonPost)
         {
             PostModel post = JsonConvert.DeserializeObject<PostModel>(jsonPost);
@@ -100,7 +82,6 @@ namespace Dottle.Controllers
             
             if (errors.Count != 0)
             {
-                // TODO: create Error validation class and return actual JSON
                 return Json(string.Join("\n", errors));
             }
 
@@ -157,21 +138,20 @@ namespace Dottle.Controllers
         {
             var r = new Regex(@"[0-9().+\s]+");
             return r.IsMatch(Phone) && !string.IsNullOrEmpty(Phone);
-        } 
+        }
 
-        public bool IsValidEmail(string Email)
+        Func<string, bool> IsValidEmail = delegate (string Email) 
         {
             var r = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-            return r.IsMatch(Email) && !string.IsNullOrEmpty(Email);
-        }
+            return r.IsMatch(Email) && !string.IsNullOrEmpty(Email); 
+        };
 
         private string PrettyTimeSheet(string ts)
         {
             StringBuilder sb = new StringBuilder("");
             var timeSheet = JsonConvert.DeserializeObject<List<WorkingDay>>(ts);
-            foreach (WorkingDay day in timeSheet)
+            foreach (var day in timeSheet.Where(day => !string.IsNullOrEmpty(day.DayName)))
             {
-                if (string.IsNullOrEmpty(day.DayName)) continue;
                 sb.Append("<div>");
                 sb.Append(day.DayName + " - ");
                 sb.Append("from: " + NumberToTime(day.HourFrom) + ":" + NumberToTime(day.MinuteFrom) + " ");
@@ -180,11 +160,19 @@ namespace Dottle.Controllers
             }
             return sb.ToString();
         }
-        
         private string NumberToTime (string time)
         {
-            if (string.IsNullOrEmpty(time)) return "00";
-            if (System.Int32.Parse(time) < 10) time = "0" + time;
+            try
+            {
+                int timeInt = Int32.Parse(time);
+                if (Int32.Parse(time) < 10) time = "0" + time;
+            }
+            catch (Exception e) 
+            {
+                Console.WriteLine(e.StackTrace);
+                Console.WriteLine("Error occured parsing time - defaulting to zero");
+                time = "00";
+            }
             return time;
         }
 

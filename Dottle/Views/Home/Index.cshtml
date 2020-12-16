@@ -7,11 +7,11 @@
     <h1 class="display-4">Welcome to Dottle</h1>
     <p class="lead">Your single point of contact for working with local businesses</p>
     <p>Here are the latests posts</p>
-    <div class="container post-container">
+    <div class="container @ViewBag.PostLayout">
         @{
             foreach (PostModel post in @Model) 
             {
-                Html.RenderPartial("_Post", post);
+                Html.RenderPartialAsync("_Post", post);
             }
         }
     </div>

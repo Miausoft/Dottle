@@ -6,21 +6,26 @@ using Dottle.Models;
 
 namespace Dottle.Helpers
 {
-    public class MarkedDayHelper
+    public static class MarkedDayHelper
     {
-        public static DayParam generateDayParam(int i, string day, List<WorkingDay> marked)
+        public static DayParam GenerateDayParam(int i, string day, List<WorkingDay> marked)
         {
-            DayParam dayParam = new DayParam();
-            dayParam.Name = day;
-            dayParam.Marked = getProperties(marked, o => o.DayName).Contains(day);
-            dayParam.HourFrom = getProperties(marked, o => o.DayName).Contains(day) ? getProperties(marked, o => o.HourFrom).ElementAt(getProperties(marked, o => o.DayName).IndexOf(day)) : "0";
-            dayParam.HourTo = getProperties(marked, o => o.DayName).Contains(day) ? getProperties(marked, o => o.HourTo).ElementAt(getProperties(marked, o => o.DayName).IndexOf(day)) : "0";
-            dayParam.MinuteFrom = getProperties(marked, o => o.DayName).Contains(day) ? getProperties(marked, o => o.MinuteFrom).ElementAt(getProperties(marked, o => o.DayName).IndexOf(day)) : "0";
-            dayParam.MinuteTo = getProperties(marked, o => o.DayName).Contains(day) ? getProperties(marked, o => o.MinuteTo).ElementAt(getProperties(marked, o => o.DayName).IndexOf(day)) : "0";
+            var markedDays = GetProperties(marked, o => o.DayName);
+            var index = markedDays.IndexOf(day);
+            var isMarked = markedDays.Contains(day);
+            DayParam dayParam = new DayParam
+            {
+                Name = day,
+                Marked = isMarked,
+                HourFrom = isMarked ? GetProperties(marked, o => o.HourFrom).ElementAt(index) : "0",
+                HourTo = isMarked ? GetProperties(marked, o => o.HourTo).ElementAt(index) : "0",
+                MinuteFrom = isMarked ? GetProperties(marked, o => o.MinuteFrom).ElementAt(index) : "0",
+                MinuteTo = isMarked ? GetProperties(marked, o => o.MinuteTo).ElementAt(index) : "0"
+            };
             return dayParam;
         }
 
-        private static List<string> getProperties(List<WorkingDay> days, Func<WorkingDay, IComparable> getProp)
+        private static List<string> GetProperties(List<WorkingDay> days, Func<WorkingDay, IComparable> getProp)
         {
             return days.Select(o => (string)getProp(o)).ToList();
         }
