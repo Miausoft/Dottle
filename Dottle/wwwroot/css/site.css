@@ -89,6 +89,32 @@ a.navbar-brand {
     padding: 24px;
 }
 
+.cart-outline {
+    background-image: url(../Images/cart-inactive.png);
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
+}
+
+.cart-outline.filled {
+    background-image: url(../Images/cart-active.png);
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
+}
+
+.cart-filled {
+    background-image: url(../Images/cart-active.png);
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
+}
+
+.rating-carts .cart-outline {
+    color: rgba(0,0,0,0);
+    display: inline-block;
+    height: 90px;
+    overflow: hidden;
+    text-indent: -999em;
+    width: 50px;
+}
 
 /* Provide sufficient contrast against white background */
 a {

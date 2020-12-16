@@ -78,18 +78,16 @@ $(document).ready(() => {
         submitNewPostForm($(e.target), '/Posts/Update/' + postId, 'PUT');
     })
 
-    $(".rating-carts .cart").mouseleave(function () {
-        $("#" + $(this).parent().attr('id') + " .star").each(function () {
+    $(".rating-carts .cart-outline").mouseleave(function () {
+        $("#" + $(this).parent().attr('id') + " .cart").each(function () {
             $(this).addClass("outline");
             $(this).removeClass("filled");
         });
     });
 
-    $(".rating-carts .cart").mouseenter(function () {
-        var hoverVal = $(this).attr('rating');
+    $(".rating-carts .cart-outline").mouseenter(function () { 
         $(this).prevUntil().addClass("filled");
         $(this).addClass("filled");
-        $("#RAT").html(hoverVal);
     });
 
     $(".rating-carts .cart").click(function () {
