@@ -1,8 +1,42 @@
 <div class="card post-entry">
+    <script src="~/js/site.js"></script>"
+    <script language="javascript" type="text/javascript"></script>
+    <style typs="text/css"
+           .rating-carts .cart .outline {
+           background: url('images/icons8-favorite-cart-100.png') no-repeat scroll 0 0 rgba(0,0,0,0)
+           }
+           .rating-carts .cart .filled {
+           background: url('images/icons8-favorite-cart-100(1).png') no-repeat scroll 0 0 rgba(0,0,0,0)
+           }
+           .rating-carts .cart {
+           color:rgba(0,0,0,0);
+           display:inline-block;
+           height:24px;
+           overflow:hidden;
+           text-indent:-999em;
+           width:24px;
+           }
+           a {
+           color:rgba(0,0,0,0);
+           text-decoration:none;
+
+           }
+    </style>
     <!--<img class="card-img-top" src="..." alt="Card image cap">-->
     <div class="card-body">
         <h5 class="card-title">@Model.Title</h5>
         <p class="card-title">@Model.Description</p>
+        <div class="rating-carts" id='div_<%#Container.DataItemIndex %>'>
+            <input type="hidden" class="@Model.Id" value='<%#Eval("@Model.Id") %>' />
+            Current Score : <span class="CurrentScore"><%#Eval("Score") %></span>
+            <div>Your score: </div>
+            <a class="cart outline" href="#" rating="1" title="vote 1">vote 1</a>
+            <a class="cart outline" href="#" rating="2" title="vote 2">vote 2</a>
+            <a class="cart outline" href="#" rating="3" title="vote 3">vote 3</a>
+            <a class="cart outline" href="#" rating="4" title="vote 4">vote 4</a>
+            <a class="cart outline" href="#" rating="5" title="vote 5">vote 5</a>
+        </div>
         <a asp-controller="Posts" asp-action="Show" asp-route-id="@Model.Id"class="btn btn-primary">Visit</a>
     </div>
-</div>
+    <div id="myElem" style="position:absolute"; display:none; padding:5px; >Thank you for your rating!</div>
+</div> 
