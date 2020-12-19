@@ -2,8 +2,9 @@
     <div class="card-body">
         <h5 class="card-title">@Model.Title</h5>
         <p class="card-title">@Model.Description</p>
-        <div class="rating-carts" id='div_<%#Container.DataItemIndex %>'>
-            <input type="hidden" class="@Model.Id" value="" />
+        <p class="card-title">@Model.Rating</p>
+        <div class="rating-carts" id='div_<%#Container.DataItemIndex %>' value="false">
+            <input type="hidden" class="post-id" value="@Model.Id" />
             Rating : <span class="CurrentScore">@ViewBag.SpanText</span>
             <a class="cart-outline" data-rating="1" title="vote 1" onclick="saveVotes(event)">vote 1</a>
             <a class="cart-outline" data-rating="2" title="vote 2" onclick="saveVotes(event)">vote 2</a>
@@ -18,6 +19,18 @@
     function saveVotes(e) {
         const el = $(e.target);
         const parent = el.parent();
-        parent.find('.CurrentScore').html(el.data('rating'));
+        const postId = parent.find('.post-id').prop('value');
+    $.ajax({  
+        url: '/Posts/RatePost/' + postId,
+        data: { rating: el.data('rating') },
+        type: 'POST',
+        success: function (result) {
+            if (parent.attr('value') === "false") {
+                parent.find('.CurrentScore').html(result);
+                parent.attr('value', 'true');
+            }
+            console.log("Result is:", result);
+        }
+    });
     }
 </script>

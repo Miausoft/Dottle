@@ -79,12 +79,20 @@ $(document).ready(() => {
     })
     $(document).on('mouseleave', '.rating-carts .cart-outline', (e) => {
         const el = $(e.target);
-        el.nextUntil().removeClass('filled');
-        el.removeClass('filled');
+        const parent = el.parent();
+        if (parent.attr('value') === "false") {
+            const el = $(e.target);
+            el.nextUntil().removeClass('filled');
+            el.removeClass('filled');
+        }
     });
     $(document).on('mouseenter', '.rating-carts .cart-outline', (e) => {
         const el = $(e.target);
-        el.prevUntil().addClass("filled");
-        el.addClass("filled");
+        const parent = el.parent();
+        if (parent.attr('value') === "false") {
+            const el = $(e.target);
+            el.prevUntil().addClass("filled");
+            el.addClass("filled");
+        }
     });
 });

@@ -29,5 +29,10 @@ namespace Dottle.Models
         [Required]
         public string UserId { get; set; }
 
+        public string Rating { get; set; }
+
+        public int Total { get; set; }
+        public int Quantity { get; set; }
+
     }
 }
