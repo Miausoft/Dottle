@@ -1,23 +1,23 @@
 <div class="card post-entry">
-    <script src="~/js/site.js"></script>
-    <script language="javascript" type="text/javascript"></script>
     <div class="card-body">
         <h5 class="card-title">@Model.Title</h5>
         <p class="card-title">@Model.Description</p>
         <div class="rating-carts" id='div_<%#Container.DataItemIndex %>'>
             <input type="hidden" class="@Model.Id" value="" />
             Rating : <span class="CurrentScore">@ViewBag.SpanText</span>
-            <a class="cart-outline" rating="1" title="vote 1" onclick="saveVotes">vote 1</a>
-            <a class="cart-outline" rating="2" title="vote 2" onclick="saveVotes">vote 2</a>
-            <a class="cart-outline" rating="3" title="vote 3" onclick="saveVotes">vote 3</a>
-            <a class="cart-outline" rating="4" title="vote 4" onclick="saveVotes">vote 4</a>
-            <a class="cart-outline" rating="5" title="vote 5" onclick="saveVotes">vote 5</a>
+            <a class="cart-outline" data-rating="1" title="vote 1" onclick="saveVotes(event)">vote 1</a>
+            <a class="cart-outline" data-rating="2" title="vote 2" onclick="saveVotes(event)">vote 2</a>
+            <a class="cart-outline" data-rating="3" title="vote 3" onclick="saveVotes(event)">vote 3</a>
+            <a class="cart-outline" data-rating="4" title="vote 4" onclick="saveVotes(event)">vote 4</a>
+            <a class="cart-outline" data-rating="5" title="vote 5" onclick="saveVotes(event)">vote 5</a>
         </div>
         <a asp-controller="Posts" asp-action="Show" asp-route-id="@Model.Id"class="btn btn-primary">Visit</a>
     </div>
 </div> 
 <script type="text/javascript">
-    function saveVotes() {
-        ViewBag.SpanText = document.getElementById('div_<%#Container.DataItemIndex %>').click();
+    function saveVotes(e) {
+        const el = $(e.target);
+        const parent = el.parent();
+        parent.find('.CurrentScore').html(el.data('rating'));
     }
 </script>

@@ -87,24 +87,4 @@ $(document).ready(() => {
         el.prevUntil().addClass("filled");
         el.addClass("filled");
     });
-
-     $(".rating-carts .cart").click(function () {
-         var v = $(this).attr('rating');
-         var newScore = 0;
-         var updateP = "#" + $(this).parent().attr('id') + ' .CurrentScore';
-         var artID = $("#" + $(this).parent().attr('id') + ' .@Model.Id').val();
-         $("#" + $(this).parent().attr('id') + " .cart").hide();
-         $("#" + $(this).parent().attr('id') + " .yourScore").html("Your Score is : &nbsp; <b style=color:#ff9900; font-size:15px'>");
-         $.ajax({
-             type: "POST",
-             url: "PostController",
-             data: "{ModelId: '" + artID + "',rate: '" + v + "'}",
-             success: function (data) {
-                 setNewScore(updateP, data.d);
-             },
-             error: function (data) {
-                 alert(data.d);
-             }
-         })
-     })
 });
