@@ -2,15 +2,15 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 .post-container-flexed {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;  
+    flex-wrap: wrap;
 }
 
 .carousel-images-container {
@@ -18,19 +18,33 @@ a.navbar-brand {
     justify-content: center;
 }
 
-.carousel-images-container .carousel-item {
+.navbar-container {
+    top: 0;
+    z-index: 9999;
+    position: fixed;
+    width: 100%;
 }
 
-.carousel-images-container .carousel-item img {
-    height: auto;
-    width: 850px;
+main {
+    margin-top: 75px;
 }
+
+    .carousel-images-container .carousel-item {
+    }
+
+        .carousel-images-container .carousel-item .carousel-image {
+            max-height: 500px;
+            height: 400px;
+            width: 850px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
 
 .post-entry {
     margin: 8px;
-    box-shadow:
-        0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-        0 6.7px 5.3px rgba(0, 0, 0, 0.048);  
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048);
 }
 
 .form-day-check {
@@ -38,6 +52,7 @@ a.navbar-brand {
     display: inline-block;
     margin-right: 4px;
 }
+
 .work-time-container {
     display: inline-block;
 }
@@ -53,9 +68,10 @@ a.navbar-brand {
 .combodate {
     margin-right: 16px;
 }
-.combodate .form-control {
-    display:inline-block
-}
+
+    .combodate .form-control {
+        display: inline-block
+    }
 
 .time-from-label, .time-to-label {
     display: inline-block;
@@ -70,7 +86,7 @@ a.navbar-brand {
     margin-bottom: 12px;
 }
 
-.contacts-body label{
+.contacts-body label {
     margin-bottom: 2px;
 }
 
@@ -96,11 +112,11 @@ a.navbar-brand {
     background-size: 50px 50px;
 }
 
-.cart-outline.filled {
-    background-image: url(../Images/cart-active.png);
-    background-repeat: no-repeat;
-    background-size: 50px 50px;
-}
+    .cart-outline.filled {
+        background-image: url(../Images/cart-active.png);
+        background-repeat: no-repeat;
+        background-size: 50px 50px;
+    }
 
 .cart-filled {
     background-image: url(../Images/cart-active.png);
@@ -119,63 +135,66 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
 }
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
 }
