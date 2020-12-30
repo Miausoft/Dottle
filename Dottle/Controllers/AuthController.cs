@@ -17,9 +17,6 @@ namespace Dottle.Controllers
         private bool AllowedToAuthenticate = true;
         private Authenticator authenticator;
         
-        
-       
-
         public AuthController(ServiceDbContext db)
         {
             this.db = db;
@@ -109,12 +106,43 @@ namespace Dottle.Controllers
             return View("SignOut");
         }
 
-
         private void s_AttemptsReached(object sender, EventArgs e)
         {
             Console.WriteLine("User has reached maximum sign in attempts");
             this.AllowedToAuthenticate = false;
         }
+
+       /* public async Task<IHttpActionResult> changePassword(UserRegisterModel usermodel)
+        {
+            var storedUser = await db.Users.FindAsync(usermodel.Name);
+            if (storedUser == null)
+            {
+                return (IHttpActionResult)NotFound();
+            }
+            string salt = PasswordManager.CreateSalt();
+            storedUser.PasswordHash = PasswordManager.HashPassword(usermodel.Password, salt);
+            storedUser.PasswordSalt = salt;
+            await db.SaveChangesAsync();
+            //var result = await db.Users.UpdateAsync(storedUser);
+            /*if (!result.Succeeded)
+            {
+                //throw exception......
+            }
+            return (IHttpActionResult)Ok();
+        }
+
+        public async Task<IHttpActionResult> changeUsername(UserRegisterModel usermodel)
+        {
+            var storedUser = await db.Users.FindAsync(usermodel.Name);
+            if (storedUser == null)
+            {
+                return (IHttpActionResult)NotFound();
+            }
+            storedUser.Name = usermodel.Name;
+            await db.SaveChangesAsync();
+            return (IHttpActionResult)Ok();
+        }
+    */
 
     }
 }

@@ -26,8 +26,6 @@ namespace Dottle.Controllers
             this.db = db;
         }
         
-       
-        
         public IActionResult New()
         {
             return View(DayHelper.Days);
@@ -185,7 +183,6 @@ namespace Dottle.Controllers
             await db.SaveChangesAsync();
             return Json(avg);
         }
-
 
     }
 }

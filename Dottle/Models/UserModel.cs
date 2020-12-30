@@ -14,7 +14,5 @@ namespace Dottle.Models
         public string PasswordHash { get; set; }
         [Required]
         public string PasswordSalt { get; set; }
-
-        public int Score { get; set; }
     }
 }

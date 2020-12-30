@@ -9,6 +9,7 @@ a.navbar-brand {
 
 .post-container-flexed {
     display: flex;
+    margin-left: 160px;
     flex-direction: row;
     flex-wrap: wrap;
 }
@@ -18,11 +19,40 @@ a.navbar-brand {
     justify-content: center;
 }
 
+.dottle-line {
+    position: absolute;
+    z-index: 1;
+    bottom: -2px;
+    max-width: 100%;
+    width: 100%;
+}
+
+.animation_bg {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.animation_overflow {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    transition-delay: 1s;
+}
+
 .navbar-container {
     top: 0;
     z-index: 9999;
     position: fixed;
     width: 100%;
+}
+
+.content-display {
+    margin-top: 30px;
+    font-size: 20px;
 }
 
 main {

@@ -6,40 +6,44 @@
 <div class="text-center">
     <h1 class="display-4">Welcome to Dottle</h1>
     <p class="lead">Your single point of contact for working with local businesses</p>
-    <div class="container carousel-images-container">
-        <div class="">
-            <div id="bootsrap-Carousel" class="carousel slide" data-ride="carousel">
-                <!-- Indicators --> 
-                <ol class="carousel-indicators">
-                    <li data-target="#bootsrap-Carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#bootsrap-Carousel" data-slide-to="1"></li>
-                    <li data-target="#bootsrap-Carousel" data-slide-to="2"></li>
-                </ol>
-                <!-- Images-->
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class='carousel-image' style="background-image: url('/Images/Slideshow/img5.jpg');"></div>
+    <div class="animation_bg">
+        <div class="animation_overflow animation_easing"></div>
+        <div class="container carousel-images-container">
+            <div class="">
+                <div id="bootsrap-Carousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#bootsrap-Carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#bootsrap-Carousel" data-slide-to="1"></li>
+                        <li data-target="#bootsrap-Carousel" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Images-->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class='carousel-image' style="background-image: url('/Images/Slideshow/img5.jpg');"></div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class='carousel-image' style="background-image: url('/Images/Slideshow/img6.jpg');"></div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class='carousel-image' style="background-image: url('/Images/Slideshow/img1.jpg');"></div>
+                        </div>
                     </div>
-                    <div class="carousel-item">
-                        <div class='carousel-image' style="background-image: url('/Images/Slideshow/img6.jpg');"></div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class='carousel-image' style="background-image: url('/Images/Slideshow/img1.jpg');"></div>
-                    </div>
+                    <!-- Left Right Arrows -->
+                    <a class="carousel-control-prev" href="#bootsrap-Carousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#bootsrap-Carousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
-                <!-- Left Right Arrows -->
-                <a class="carousel-control-prev" href="#bootsrap-Carousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#bootsrap-Carousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
             </div>
+            <img class="dottle-line" src="~/Images/Slideshow/img11.png" alt="Dottle line"/>
         </div>
     </div>
-    <p>Here are the latests posts</p>
+    <p class="content-display">Here are the latests posts</p>
     <div class="container @ViewBag.PostLayout">
         @{
             foreach (PostModel post in @Model)
