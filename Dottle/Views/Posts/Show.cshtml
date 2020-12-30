@@ -42,7 +42,7 @@
                     <h4 class="card-title">Interested? Contact the business owner!</h4>
                 </div>
                 <div class="card-body">
-                    <form action="mailto:@Model.Post.Email" method="POST" enctype="multipart/form-data" name="ContactForm">
+                    <form asp-controller="Posts" asp-action="Contact" method="POST">
                         <div class="form-group">
                             <label for="email">Your email</label>
                             <input type="email" class="form-control" placeholder="Enter email" id="email">

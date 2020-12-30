@@ -176,5 +176,10 @@ namespace Dottle.Controllers
             return time;
         }
 
+        public IActionResult Contact()
+        {
+            
+            return View("ContactSuccess");
+        }
     }
 }
