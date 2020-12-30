@@ -2,6 +2,8 @@
 .idea/
 .DS_Store
 Dottle/.DS_Store
+Dottle/obj/*
+Dottle/bin/*
 ###################
 # compiled source #
 ###################
