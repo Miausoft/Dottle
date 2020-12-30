@@ -64,8 +64,8 @@ main {
 
         .carousel-images-container .carousel-item .carousel-image {
             max-height: 500px;
-            height: 400px;
-            width: 850px;
+            height: 600px;
+            width: 1850px;
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
