@@ -179,6 +179,7 @@ namespace Dottle.Controllers
 
         public IActionResult Contact(Inquiry inq)
         {
+            if (!ModelState.IsValid) return View("ContactFailure", inq);
             string name = string.IsNullOrEmpty(inq.Name) ? "Anonymous" : inq.Name;
             MailHelper.SendEmail(inq.Email, name, inq.From, inq.Title, inq.Message);
             return View("ContactSuccess");

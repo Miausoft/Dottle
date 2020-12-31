@@ -1,0 +1,7 @@
+@model Dottle.ViewModels.Inquiry
+
+<h4>We've encountered issues while trying to send your inquiry</h4>
+
+@Html.ValidationSummary()
+
+<input type="button" class="btn btn-primary"value="Go back and fix your mistakes!" onclick="history.back()">
