@@ -7,6 +7,10 @@ a.navbar-brand {
     word-break: break-all;
 }
 
+.position {
+    margin-top: 5px;
+}
+
 .post-container-flexed {
     display: flex;
     margin-left: 160px;
@@ -17,6 +21,18 @@ a.navbar-brand {
 .carousel-images-container {
     display: flex;
     justify-content: center;
+}
+
+.first {
+    background-image: url('/Images/Slideshow/img3.jpg');
+}
+
+.second {
+    background-image: url('/Images/Slideshow/img7.jpg');
+}
+
+.third {
+    background-image: url('/Images/Slideshow/img12.jpg');
 }
 
 .carousel-control-next {
