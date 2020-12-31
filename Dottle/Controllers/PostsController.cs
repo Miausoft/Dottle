@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore.Storage;
 using System.Linq;
 using Dottle.Helpers;
+using Dottle.ViewModels;
 using Microsoft.AspNetCore.Http;
 
 namespace Dottle.Controllers
@@ -176,9 +177,10 @@ namespace Dottle.Controllers
             return time;
         }
 
-        public IActionResult Contact()
+        public IActionResult Contact(Inquiry inq)
         {
-            
+            string name = string.IsNullOrEmpty(inq.Name) ? "Anonymous" : inq.Name;
+            MailHelper.SendEmail(inq.Email, name, inq.From, inq.Title, inq.Message);
             return View("ContactSuccess");
         }
     }

@@ -1,37 +1,32 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Mail;
+using RestSharp;
+using RestSharp.Authenticators;
 
 namespace Dottle.Helpers
 {
-    public class MailHelper
+    public static class MailHelper
     {
-        public async void SendEmail()
+        public static void SendEmail(string toEmail, string toName, string fromEmail, string title, string message)
         {
-            var client = new HttpClient();
-            var request = new HttpRequestMessage
+            string finalTitle = $"{toName} {fromEmail} from Dottle sent you an inquiry - {title}";
+            RestClient client = new RestClient
             {
-                Method = HttpMethod.Post,
-                RequestUri = new Uri("https://rapidprod-sendgrid-v1.p.rapidapi.com/mail/send"),
-                Headers =
-                {
-                    { "x-rapidapi-key", "7d32c1757fmsh2d901c55708746dp176860jsn1b702f932d65" },
-                    { "x-rapidapi-host", "rapidprod-sendgrid-v1.p.rapidapi.com" },
-                },
-                Content = new StringContent("{\n    \"personalizations\": [\n        {\n            \"to\": [\n                {\n                    \"email\": \"john@example.com\"\n                }\n            ],\n            \"subject\": \"Hello, World!\"\n        }\n    ],\n    \"from\": {\n        \"email\": \"from_address@example.com\"\n    },\n    \"content\": [\n        {\n            \"type\": \"text/plain\",\n            \"value\": \"Hello, World!\"\n        }\n    ]\n}")
-                {
-                    Headers =
-                    {
-                        ContentType = new MediaTypeHeaderValue("application/json")
-                    }
-                }
+                BaseUrl = new Uri("https://api.mailgun.net/v3"),
+                Authenticator = new HttpBasicAuthenticator("api",
+                    "13b050763639802749c03f06a88bb541-c50a0e68-23342223")
             };
-            using (var response = await client.SendAsync(request))
-            {
-                response.EnsureSuccessStatusCode();
-                var body = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(body);
-            }            
+            RestRequest request = new RestRequest();
+            request.AddParameter("domain", "sandbox94c50c2865a84124b5f09bf6d184f748.mailgun.org", ParameterType.UrlSegment);
+            request.Resource = "{domain}/messages";
+            request.AddParameter("from", "Mailgun Sandbox <postmaster@sandbox94c50c2865a84124b5f09bf6d184f748.mailgun.org>");
+            request.AddParameter("to", $"{toName} <{toEmail}>");
+            request.AddParameter("subject", finalTitle);
+            request.AddParameter("text", message);
+            request.Method = Method.POST;
+            client.Execute(request);
         }
     }
 }
