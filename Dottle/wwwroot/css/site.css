@@ -19,6 +19,15 @@ a.navbar-brand {
     justify-content: center;
 }
 
+.carousel-control-next {
+    right: 400px
+    !important;
+}
+
+.carousel-control-prev {
+    left: 400px !important;
+}
+
 .dottle-line {
     position: absolute;
     z-index: 1;
