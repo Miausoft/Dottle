@@ -26,8 +26,6 @@ namespace Dottle.Controllers
             this.db = db;
         }
         
-       
-        
         public IActionResult New()
         {
             return View(DayHelper.Days);
@@ -174,6 +172,16 @@ namespace Dottle.Controllers
                 time = "00";
             }
             return time;
+        }
+        [HttpPost]
+        public async Task<JsonResult> RatePost(string rating, int id)
+        {
+            var post = await db.Posts.FindAsync(id);
+            var avg = (post.Total + Int32.Parse(rating)) / (post.Quantity + 1);
+            post.Total = post.Total + Int32.Parse(rating);
+            post.Quantity++;
+            await db.SaveChangesAsync();
+            return Json(avg);
         }
 
     }
