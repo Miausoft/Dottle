@@ -5,12 +5,12 @@
         <p class="card-title">@Model.Rating</p>
         <div class="rating-carts" id='div_<%#Container.DataItemIndex %>' value="false">
             <input type="hidden" class="post-id" value="@Model.Id" />
-            Rating : <span class="CurrentScore">@ViewBag.SpanText</span>
             <a class="cart-outline" data-rating="1" title="vote 1" onclick="saveVotes(event)">vote 1</a>
             <a class="cart-outline" data-rating="2" title="vote 2" onclick="saveVotes(event)">vote 2</a>
             <a class="cart-outline" data-rating="3" title="vote 3" onclick="saveVotes(event)">vote 3</a>
             <a class="cart-outline" data-rating="4" title="vote 4" onclick="saveVotes(event)">vote 4</a>
             <a class="cart-outline" data-rating="5" title="vote 5" onclick="saveVotes(event)">vote 5</a>
+            <p> Rating : <span class="CurrentScore">@ViewBag.SpanText</span></p>
         </div>
         <a asp-controller="Posts" asp-action="Show" asp-route-id="@Model.Id"class="btn btn-primary">Visit</a>
     </div>
