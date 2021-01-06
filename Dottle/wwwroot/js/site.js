@@ -96,15 +96,20 @@ $(document).ready(() => {
         }
     });
 
-    $(document).on('click', '.rating-carts .cart-outline', (e) => {
-        let elem = $(e.target).first().parent();
-        if (elem.attr('value') === "true") {
+    const toggleCarts = (e) => {
+        let elem = $(e).first().parent();
+        if (elem.attr('value') === "false") {
             elem.find(".total-rating").hide();
             elem.find(".CurrentScore").show();
         } else {
             elem.find(".total-rating").show();
             elem.find(".CurrentScore").hide();
         }
+    }
+
+    $(document).on('click', '.rating-carts .cart-outline', (e) => {
+        toggleCarts(e.target)
     });
 
+    $.each($('.cart-outline'), (e) => { toggleCarts (e)});
 });

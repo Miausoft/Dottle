@@ -9,7 +9,7 @@
             <a class="cart-outline @(@Model.Rating > 2 ? "filled" : "")" data-rating="3" title="vote 3" onclick="saveVotes(event)">vote 3</a>
             <a class="cart-outline @(@Model.Rating > 3 ? "filled" : "")" data-rating="4" title="vote 4" onclick="saveVotes(event)">vote 4</a>
             <a class="cart-outline @(@Model.Rating > 4 ? "filled" : "")" data-rating="5" title="vote 5" onclick="saveVotes(event)">vote 5</a>
-            <p class="total-rating"> Rating :  @Model.Rating<span class="CurrentScore">@ViewBag.SpanText</span></p>
+            <p>Rating : <span class="total-rating">@Model.Rating</span><span class="CurrentScore">@ViewBag.SpanText</span></p>
         </div>
             <a asp-controller="Posts" asp-action="Show" asp-route-id="@Model.Id" class="button normal" style="vertical-align: middle"><span>Visit </span></a>
         </div>
