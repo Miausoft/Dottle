@@ -182,6 +182,7 @@ namespace Dottle.Controllers
             var avg = (post.Total + Int32.Parse(rating)) / (post.Quantity + 1);
             post.Total = post.Total + Int32.Parse(rating);
             post.Quantity++;
+            post.Rating = avg;
             await db.SaveChangesAsync();
             return Json(avg);
         }
