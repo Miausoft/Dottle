@@ -182,7 +182,7 @@ main {
 .rating-carts .cart-outline {
     color: rgba(0,0,0,0);
     display: inline-block;
-    height: 90px;
+    height: 60px;
     overflow: hidden;
     text-indent: -999em;
     width: 50px;
@@ -197,6 +197,54 @@ a {
     color: #fff;
     background-color: #1b6ec2;
     border-color: #1861ac;
+}
+
+.button {
+    display: inline-block;
+    border-radius: 12px;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px;
+    width: 91px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.normal {
+    background-color: #20B2AA;
+}
+
+.danger {
+    background-color: #FF4500;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 15px;
+    color: #F0FFF0;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {

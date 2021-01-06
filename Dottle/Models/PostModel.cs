@@ -28,9 +28,7 @@ namespace Dottle.Models
         public string TimeSheet { get; set; }
         [Required]
         public string UserId { get; set; }
-
-        public string Rating { get; set; }
-
+        public int Rating { get; set; }
         public int Total { get; set; }
         public int Quantity { get; set; }
 
