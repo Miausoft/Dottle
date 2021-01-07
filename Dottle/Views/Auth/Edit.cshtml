@@ -1,3 +1,19 @@
-@model User
+@model Dottle.ViewModels.UserEditModel
 
-<div>Editing User</div>
+<div>Editing User @Model.Username</div>
+
+<h4>Change Password</h4>
+
+<form asp-action="Update" method="post">
+    <div class="form-group">
+        <label asp-for="Password">Password</label>
+        <input asp-for="Password" type="password" class="form-control">
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+     <div class="form-group">
+            <label asp-for="PasswordConfirm">Password confirmation</label>
+            <input asp-for="PasswordConfirm" type="password" class="form-control">
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+    <button type="submit" class="button normal" style="vertical-align: middle"><span>Change Password</span></button>
+</form>

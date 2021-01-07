@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Dottle.Helpers;
 using Dottle.Models;
+using Dottle.ViewModels;
 using Microsoft.AspNetCore.Http;
 
 namespace Dottle.Controllers
@@ -115,7 +116,14 @@ namespace Dottle.Controllers
                 return View("SessionFailure");
             }
             var currUser = await db.Users.FindAsync(userName);
-            return View("Edit", currUser);
+            var uEditModel = new UserEditModel() {Username = currUser.Name};
+            return View("Edit", uEditModel);
+        }
+
+        [HttpPost]
+        public async Task<ViewResult> Update(UserModel newUser)
+        {
+            return View();
         }
 
         private void s_AttemptsReached(object sender, EventArgs e)
