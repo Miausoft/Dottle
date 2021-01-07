@@ -111,21 +111,5 @@ $(document).ready(() => {
         toggleCarts(e.target)
     });
 
-    function saveVotes(e) {
-        const el = $(e.target);
-        const parent = el.parent();
-        const postId = parent.find('.post-id').prop('value');
-        $.ajax({
-            url: '/Posts/RatePost/' + postId,
-            data: { rating: el.data('rating') },
-            type: 'POST',
-            success: function (result) {
-                if (parent.attr('value') === "false") {
-                    parent.find('.CurrentScore').html(result);
-                    parent.attr('value', 'true');
-                }
-                console.log("Result is:", result);
-            }
-        });
-    }
+    
 });

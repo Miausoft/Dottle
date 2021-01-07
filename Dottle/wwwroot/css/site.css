@@ -13,7 +13,7 @@ a.navbar-brand {
 
 .post-container-flexed {
     display: flex;
-    margin-left: 160px;
+    margin-left: 50px;
     flex-direction: row;
     flex-wrap: wrap;
 }
