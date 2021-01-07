@@ -13,7 +13,7 @@ a.navbar-brand {
 
 .post-container-flexed {
     display: flex;
-    margin-left: 50px;
+    margin-left: 35px;
     flex-direction: row;
     flex-wrap: wrap;
 }
@@ -100,6 +100,7 @@ main {
 .post-entry {
     margin: 8px;
     box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048);
+    width: 30%;
 }
 
 .form-day-check {
