@@ -18,6 +18,7 @@
                     <input asp-for="PasswordConfirm" type="password" class="form-control">
                     @Html.ValidationMessageFor(m => m.Password)
                 </div>
+                <input asp-for="Username" type="hidden" value="@Model.Username"/>
                 <button type="submit" class="button normal" style="vertical-align: middle"><span>Change Password</span></button>
             </form>
         </div>

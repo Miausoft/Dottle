@@ -121,9 +121,15 @@ namespace Dottle.Controllers
         }
 
         [HttpPost]
-        public async Task<ViewResult> Update(UserModel newUser)
+        public async Task<ViewResult> Update(UserEditModel newUser)
         {
-            return View();
+            if (!newUser.Password.Equals(newUser.PasswordConfirm)) return View("UpdateFailure");
+            var storedUser = await db.Users.FindAsync(newUser.Username);
+            string newSalt = PasswordManager.CreateSalt();
+            storedUser.PasswordSalt = newSalt;
+            storedUser.PasswordHash = PasswordManager.HashPassword(newUser.Password, newSalt);
+            await db.SaveChangesAsync();
+            return View("UpdateSuccess");
         }
 
         private void s_AttemptsReached(object sender, EventArgs e)
