@@ -106,6 +106,18 @@ namespace Dottle.Controllers
             return View("SignOut");
         }
 
+        [HttpGet]
+        public async Task<ViewResult> Edit()
+        {
+            string userName = HttpContext.Session.GetString("User");
+            if (string.IsNullOrEmpty((userName)))
+            {
+                return View("SessionFailure");
+            }
+            var currUser = await db.Users.FindAsync(userName);
+            return View("Edit", currUser);
+        }
+
         private void s_AttemptsReached(object sender, EventArgs e)
         {
             Console.WriteLine("User has reached maximum sign in attempts");
