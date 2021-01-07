@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore.Storage;
 using System.Linq;
 using Dottle.Helpers;
+using Dottle.ViewModels;
 using Microsoft.AspNetCore.Http;
 
 namespace Dottle.Controllers
@@ -185,5 +186,12 @@ namespace Dottle.Controllers
             return Json(avg);
         }
 
+        public IActionResult Contact(Inquiry inq)
+        {
+            if (!ModelState.IsValid) return View("ContactFailure", inq);
+            string name = string.IsNullOrEmpty(inq.Name) ? "Anonymous" : inq.Name;
+            MailHelper.SendEmail(inq.Email, name, inq.From, inq.Title, inq.Message);
+            return View("ContactSuccess");
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Http
 @using Microsoft.AspNetCore.Components.Web
+@using Dottle.ViewModels
 @model PostShowViewModel
 
 <div class="container">
@@ -37,6 +38,14 @@
                     <a asp-controller="Posts" asp-action="Delete" asp-route-id="@Model.Post.Id" class="button danger" style="vertical-align: middle"><span>Delete </span></a>
                 </div>
             }
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Interested? Contact the business owner!</h4>
+                </div>
+                <div class="card-body">
+                    @{ await Html.RenderPartialAsync("_ContactForm", new Inquiry {Email = Model.Post.Email}); }
+                </div>
+            </div>
         </div>
     </div>
 </div>
