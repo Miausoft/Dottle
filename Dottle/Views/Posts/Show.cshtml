@@ -34,8 +34,8 @@
             @if (@Context.Session.GetString("User") != null && @Model.Post.UserId == @Context.Session.GetString("User"))
             {
                 <div class="action-container">
-                    <a asp-controller="Posts" asp-action="Edit" asp-route-id="@Model.Post.Id" class="btn btn-primary">Edit</a>
-                    <a asp-controller="Posts" asp-action="Delete" asp-route-id="@Model.Post.Id" class="btn btn-danger">Delete</a>
+                    <a asp-controller="Posts" asp-action="Edit" asp-route-id="@Model.Post.Id" class="button normal" style="vertical-align: middle"><span>Edit </span></a>
+                    <a asp-controller="Posts" asp-action="Delete" asp-route-id="@Model.Post.Id" class="button danger" style="vertical-align: middle"><span>Delete </span></a>
                 </div>
             }
             <div class="card">
