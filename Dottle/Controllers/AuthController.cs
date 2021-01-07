@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Dottle.Helpers;
 using Dottle.Models;
+using Dottle.ViewModels;
 using Microsoft.AspNetCore.Http;
 
 namespace Dottle.Controllers
@@ -104,6 +105,31 @@ namespace Dottle.Controllers
         {
             HttpContext.Session.Clear();
             return View("SignOut");
+        }
+
+        [HttpGet]
+        public async Task<ViewResult> Edit()
+        {
+            string userName = HttpContext.Session.GetString("User");
+            if (string.IsNullOrEmpty((userName)))
+            {
+                return View("SessionFailure");
+            }
+            var currUser = await db.Users.FindAsync(userName);
+            var uEditModel = new UserEditModel() {Username = currUser.Name};
+            return View("Edit", uEditModel);
+        }
+
+        [HttpPost]
+        public async Task<ViewResult> Update(UserEditModel newUser)
+        {
+            if (!newUser.Password.Equals(newUser.PasswordConfirm)) return View("UpdateFailure");
+            var storedUser = await db.Users.FindAsync(newUser.Username);
+            string newSalt = PasswordManager.CreateSalt();
+            storedUser.PasswordSalt = newSalt;
+            storedUser.PasswordHash = PasswordManager.HashPassword(newUser.Password, newSalt);
+            await db.SaveChangesAsync();
+            return View("UpdateSuccess");
         }
 
         private void s_AttemptsReached(object sender, EventArgs e)

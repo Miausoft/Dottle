@@ -52,6 +52,11 @@ a.navbar-brand {
     width: 100%;
 }
 
+.form-header {
+    margin-bottom: 12px;
+    margin-top: 24px;
+}
+
 .animation_bg {
     height: 100%;
     position: relative;
