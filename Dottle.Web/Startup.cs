@@ -5,12 +5,17 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Dottle.Models;
+using Dottle.Web.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Dottle.Persistence;
+using Dottle.Persistence.Repository;
+using Dottle.Domain.Entities;
+using AutoMapper;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Dottle.Services.Security.Password;
 
-namespace Dottle
+namespace Dottle.Web
 {
     public class Startup
     {
@@ -24,24 +29,43 @@ namespace Dottle
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddRazorPages().AddMvcOptions(options =>
+            {
+                options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(_ => "The field is required.");
+            });
+
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                //options.CheckConsentNeeded = context => true;
-                options.CheckConsentNeeded = context => false;
+                options.ConsentCookie.IsEssential = true;
+                options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
             services.AddDistributedMemoryCache();
 
-            services.AddSession(options =>
-            {
-                // Set session timeout value
-                options.IdleTimeout = TimeSpan.FromMinutes(30);
-                options.Cookie.HttpOnly = true;
-            });
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.Cookie.IsEssential = true;
+                    options.Cookie.HttpOnly = true;
+                    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                    options.Cookie.SameSite = SameSiteMode.None;
+                    options.LoginPath = "/Authentication/Login";
+                    options.Cookie.Name = "UserCookie";
+                    options.AccessDeniedPath = "/Home/Index";
+                    options.ExpireTimeSpan = TimeSpan.Parse("5");
+                });
 
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
+
+            services.AddScoped<IRepository<User>, Repository<User>>();
+            services.AddScoped<IRepository<Post>, Repository<Post>>();
+            services.AddScoped<IPasswordHasher, PasswordHasher>();
+
+            services.AddSingleton(new MapperConfiguration(mc => mc.AddProfile(new Web.AutoMapperProfile())).CreateMapper());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,8 +83,8 @@ namespace Dottle
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSession();
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -68,6 +92,7 @@ namespace Dottle
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }
