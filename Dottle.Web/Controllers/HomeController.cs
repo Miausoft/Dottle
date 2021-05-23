@@ -1,25 +1,22 @@
-﻿/*using System.Collections.Generic;
-using System.Diagnostics;
-using System.Reflection;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Dottle.Models;
-using Microsoft.EntityFrameworkCore;
+using Dottle.Web.Models;
 using Microsoft.Extensions.Configuration;
+using Dottle.Persistence.Repository;
+using Dottle.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
-namespace Dottle.Controllers
+namespace Dottle.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private ServiceDbContext db;
+        private readonly IRepository<Post> _postRepo;
         private readonly IConfiguration _config;
 
-        public HomeController(ILogger<HomeController> logger, ServiceDbContext db, IConfiguration config)
+        public HomeController(IRepository<Post> postRepo, IConfiguration config)
         {
-            this.db = db;
-            _logger = logger;
+            _postRepo = postRepo;
             _config = config;
         }
 
@@ -27,7 +24,7 @@ namespace Dottle.Controllers
         {
             var layoutPreference = _config["UserConfig:SiteLayout"];
             ViewBag.PostLayout = layoutPreference;
-            var posts = await db.Posts.ToListAsync();
+            var posts = await _postRepo.GetAll().ToListAsync();
             return View(posts);
         }
 
@@ -55,4 +52,3 @@ namespace Dottle.Controllers
         }
     }
 }
-*/
