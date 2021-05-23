@@ -18,7 +18,6 @@ namespace Dottle.Persistence.Configuration
             builder.Property(u => u.FirstName).HasMaxLength(50);
             builder.Property(u => u.LastName).HasMaxLength(50);
             builder.Property(u => u.Email).HasMaxLength(254);
-            builder.Property(u => u.Password).HasMaxLength(50);
         }
     }
 }
