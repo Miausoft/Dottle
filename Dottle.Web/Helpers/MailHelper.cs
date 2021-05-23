@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Net.Mail;
 using RestSharp;
 using RestSharp.Authenticators;
 
-namespace Dottle.Helpers
+namespace Dottle.Web.Helpers
 {
     public static class MailHelper
     {
