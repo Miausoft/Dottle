@@ -1,7 +1,7 @@
-﻿@model List<PostModel>
+﻿@model List<Post>
 @{
     ViewData["Title"] = "Home Page";
-    List<PostModel> posts = ViewData["posts"] as List<PostModel>;
+    List<Post> posts = ViewData["posts"] as List<Post>;
 }
 <div class="text-center">
     <h1 class="display-4">Welcome to Dottle</h1>
@@ -46,7 +46,7 @@
     <p class="content-display">Here are the latests posts</p>
     <div class="container @ViewBag.PostLayout">
         @{
-            foreach (PostModel post in @Model)
+            foreach (Post post in @Model)
             {
                 Html.RenderPartialAsync("_Post", post);
             }
