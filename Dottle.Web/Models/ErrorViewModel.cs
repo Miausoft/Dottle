@@ -1,4 +1,4 @@
-namespace Dottle.Models
+﻿namespace Dottle.Web.Models
 {
     public class ErrorViewModel
     {
