@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Web.Mvc;
 using Dottle.Domain.Entities;
 using Dottle.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dottle.Tests.Controllers
 {
-    public class BaseControllerTest
+    public abstract class BaseControllerTest
     {
         protected BaseControllerTest(DbContextOptions<DatabaseContext> options)
         {

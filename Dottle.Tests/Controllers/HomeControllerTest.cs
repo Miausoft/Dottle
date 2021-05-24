@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.AspNetCore.Mvc;
 using Dottle.Domain.Entities;
 using Dottle.Persistence;
 using Dottle.Persistence.Repository;
 using Dottle.Web.Controllers;
 using Dottle.Web.ViewModels;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Moq;
@@ -23,20 +23,18 @@ namespace Dottle.Tests.Controllers
         {
         }
 
-        private HomeController MockHomeController(DatabaseContext context)
+        private HomeController MockController(DatabaseContext context)
         {
             var repository = new Repository<Post>(context);
             var confMock = new Mock<IConfiguration>();
             return new HomeController(repository, confMock.Object);
         }
 
-        
-
         [Fact]
         public void Index_ShouldReturnViewResultWithPostList()
         {
             using var context = new DatabaseContext(ContextOptions);
-            var homeController = MockHomeController(context);
+            var homeController = MockController(context);
 
             var result = homeController.Index().GetAwaiter().GetResult() as ViewResult;
 
@@ -49,7 +47,7 @@ namespace Dottle.Tests.Controllers
         public void Settings_ShouldReturnViewResultNamedSettings()
         {
             using var context = new DatabaseContext(ContextOptions);
-            var homeController = MockHomeController(context);
+            var homeController = MockController(context);
 
             var result = homeController.Settings() as ViewResult;
 
@@ -62,7 +60,7 @@ namespace Dottle.Tests.Controllers
         public void UpdateSettings_ShouldReturnRedirectResult_WithValidUserSettingsData()
         {
             using var context = new DatabaseContext(ContextOptions);
-            var homeController = MockHomeController(context);
+            var homeController = MockController(context);
             UserSetting userSetting = new UserSetting
             {
                 SiteLayout = string.Empty,
