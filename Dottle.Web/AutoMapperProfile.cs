@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Dottle.Domain.Entities;
-using Dottle.Web.Models.User;
+using Dottle.Web.Models;
 
 namespace Dottle.Web
 {
@@ -8,7 +8,8 @@ namespace Dottle.Web
     {
         public AutoMapperProfile()
         {
-            CreateMap<CreateViewModel, User>();
+            CreateMap<CreateUserViewModel, User>();
+            CreateMap<CreatePostViewModel, Post>();
         }
     }
 }

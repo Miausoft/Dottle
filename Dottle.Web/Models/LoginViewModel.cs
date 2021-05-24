@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Dottle.Web.Models.User
+namespace Dottle.Web.Models
 {
     public class LoginViewModel
     {

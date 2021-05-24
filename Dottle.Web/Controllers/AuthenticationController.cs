@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Dottle.Persistence.Repository;
 using Dottle.Domain.Entities;
-using Dottle.Web.Models.User;
+using Dottle.Web.Models;
 using AutoMapper;
 using System.Linq;
 using Dottle.Services.Security.Password;

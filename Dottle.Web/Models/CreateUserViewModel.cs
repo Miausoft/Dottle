@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Dottle.Web.Models.User
+namespace Dottle.Web.Models
 {
-    public class CreateViewModel
+    public class CreateUserViewModel
     {
         [Required]
         [MaxLength(50, ErrorMessage = "First name must be 50 characters or less.")]

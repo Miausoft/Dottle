@@ -1,6 +1,4 @@
-﻿@model PostEditViewModel
-@using Dottle.Web.Helpers
-<div class="card">
+﻿<div class="card">
     <div class="card-header">
         <h5>Editing Post</h5>
     </div>
@@ -29,12 +27,12 @@
                 </div>
                 <div class="form-group">
                     <label class="working-hours-label">Working Hours</label>
-                    @{
+                    @*@{
                         foreach (var item in @Model.Days.Select((day, i) => new { i, day }))
                         {
                             Html.RenderPartial("_DayCheck", MarkedDayHelper.GenerateDayParam(item.i, item.day, @Model.MarkedTimes));
                         }
-                    }
+                    }*@
                 </div>
                 <button type="submit" class="button normal" style="vertical-align: middle"><span>Save</span></button>
             </form>

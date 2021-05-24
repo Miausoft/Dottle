@@ -3,7 +3,7 @@ using AutoMapper;
 using Dottle.Domain.Entities;
 using Dottle.Persistence.Repository;
 using Dottle.Services.Security.Password;
-using Dottle.Web.Models.User;
+using Dottle.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dottle.Web.Controllers
@@ -28,7 +28,7 @@ namespace Dottle.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateViewModel model)
+        public async Task<IActionResult> Create(CreateUserViewModel model)
         {
             if (!ModelState.IsValid)
             {
