@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Dottle.Domain.Entities
 {
@@ -16,13 +17,16 @@ namespace Dottle.Domain.Entities
         public string Phone { get; set; }
 
         public string Address { get; set; }
-        
+
         public ICollection<Rate> Rates { get; set; }
-        
+
         public ICollection<Comment> Comments { get; set; }
-        
+
         public ICollection<TimeSheet> TimeSheets { get; set; }
-        
+
+        public Guid UserId { get; set; }
+
+        [JsonIgnore]
         public User User { get; set; }
     }
 }

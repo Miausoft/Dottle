@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Dottle.Domain.Entities
 {
@@ -15,6 +16,8 @@ namespace Dottle.Domain.Entities
         public int ClosesAt { get; set; }
 
         public Guid PostId { get; set; }
+
+        [JsonIgnore]
         public Post Post { get; set; }
     }
 }
