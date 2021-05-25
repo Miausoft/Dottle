@@ -39,9 +39,5 @@
             el.prevUntil().addClass("filled");
             el.addClass("filled");
         }
-    });
-
-    $(document).on('click', '.rating-carts .cart-outline', (e) => {
-        toggleCarts(e.target)
     });  
 });
