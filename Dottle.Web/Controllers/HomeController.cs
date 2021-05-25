@@ -6,17 +6,22 @@ using Dottle.Persistence.Repository;
 using Dottle.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using AutoMapper;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Dottle.Web.Controllers
 {
     public class HomeController : Controller
     {
         private readonly IRepository<Post> _postRepo;
+        private readonly IMapper _mapper;
         private readonly IConfiguration _config;
 
-        public HomeController(IRepository<Post> postRepo, IConfiguration config)
+        public HomeController(IRepository<Post> postRepo, IMapper mapper, IConfiguration config)
         {
             _postRepo = postRepo;
+            _mapper = mapper;
             _config = config;
         }
 
@@ -24,8 +29,22 @@ namespace Dottle.Web.Controllers
         {
             var layoutPreference = _config["UserConfig:SiteLayout"];
             ViewBag.PostLayout = layoutPreference;
-            var posts = await _postRepo.GetAll().ToListAsync();
-            return View(posts);
+
+            // TODO: MUST move mapping somewhere else
+
+            var posts = await _postRepo.GetAllInclude(nameof(Post.Rates)).ToListAsync();
+            var model = _mapper.Map<List<Post>, List<PostViewModel>>(posts);
+
+            foreach(var x in posts)
+            {
+                var itemToChange = model.FirstOrDefault(m => m.Id.Equals(x.Id));
+                if(itemToChange != null)
+                {
+                    itemToChange.Rate = x.Rates.Select(r => r.Value).DefaultIfEmpty().Average();
+                }
+            }
+
+            return View(model);
         }
 
         [HttpPost]
