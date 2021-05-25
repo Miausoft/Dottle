@@ -1,5 +1,4 @@
-﻿// https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-$(document).ready(() => {
+﻿$(document).ready(() => {
     const initPostCheckBoxes = () => {
         const dayCheckBoxes = $('.day-check-box');
         $.each(dayCheckBoxes, (id, el) => {
@@ -19,64 +18,10 @@ $(document).ready(() => {
         });
     }
 
-    const submitNewPostForm = (form, ep, method) => {
-        const title = form.find('#PostTitle').prop('value');
-        const phoneNumber = form.find('#PostPhoneNumber').prop('value');
-        const email = form.find('#PostEmail').prop('value');
-        const address = form.find('#PostAddress').prop('value');
-        const description = form.find('#PostDescription').prop('value');
-
-        const checkedBoxes = $('.day-check-box:checked');
-        let timeSheet = [{}];
-
-        $.each(checkedBoxes, (id, el) => {
-            const elem = $(el);
-            const comboDate = elem.parent().next().find('.combodate');
-            const hrFrom = $(comboDate.get(0)).find('.hour').prop('value');
-            const minFrom = $(comboDate.get(0)).find('.minute').prop('value');
-            const hrTo = $(comboDate.get(1)).find('.hour').prop('value');
-            const minTo = $(comboDate.get(1)).find('.minute').prop('value');
-
-            timeSheet.push({
-                DayName: elem.prop('id'),
-                HourFrom: hrFrom,
-                MinuteFrom: minFrom,
-                HourTo: hrTo,
-                MinuteTo: minTo
-            });
-        });
-
-        const postModel = {
-            jsonPost: JSON.stringify({
-                Title: title,
-                PhoneNumber: phoneNumber,
-                Email: email,
-                Address: address,
-                Description: description,
-                TimeSheet: JSON.stringify(timeSheet)
-            }
-            )
-        };
-        $.ajax({
-            url: ep,
-            type: method,
-            data: postModel,
-            success: (resp) => alert(resp)
-        });
-    }
-
     initPostCheckBoxes();
     initPostWorkingTimes();
 
-    $('#new-post-form').submit((e) => {
-        e.preventDefault();
-        submitNewPostForm($(e.target), '/Posts/Create', 'POST');
-    })
-    $('#update-post-form').submit((e) => {
-        e.preventDefault();
-        const postId = $(e.target).data('post');
-        submitNewPostForm($(e.target), '/Posts/Update/' + postId, 'PUT');
-    })
+    //TODO: need to fix mouseleave and mouseenter
     $(document).on('mouseleave', '.rating-carts .cart-outline', (e) => {
         const el = $(e.target);
         const parent = el.parent();
@@ -96,20 +41,7 @@ $(document).ready(() => {
         }
     });
 
-    const toggleCarts = (e) => {
-        let elem = $(e).first().parent();
-        if (elem.attr('value') === "false") {
-            elem.find(".total-rating").hide();
-            elem.find(".CurrentScore").show();
-        } else {
-            elem.find(".total-rating").show();
-            elem.find(".CurrentScore").hide();
-        }
-    }
-
     $(document).on('click', '.rating-carts .cart-outline', (e) => {
         toggleCarts(e.target)
-    });
-
-    
+    });  
 });
