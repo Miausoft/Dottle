@@ -1,4 +1,4 @@
-@model PostViewModel  
+@model PostViewModel
 
 <div class="card post-entry">
     <div class="card-body">
@@ -6,20 +6,22 @@
         <p class="card-title">@Model.Description</p>
         <div class="rating-carts" id='div_<%#Container.DataItemIndex %>' value="false">
             <input type="hidden" id="postId" value="@Model.Id" />
-            <input type="hidden" id="userId" value="@Model.UserId" />
+            <input type="hidden" id="userId" value="@User.Identity.Name" />
             @for (int i = 1; i <= 5; ++i)
             {
-                <a class="cart-outline @(Model.Rate > i-1 ? "filled" : "")" title="vote @i" onclick="saveVotes(@i)">vote @i</a>
+                <a class="cart-outline @(Model.AverageRate > i - 1 ? "filled" : "")" title="vote @i" onclick="saveVotes(@i)">vote @i</a>
             }
-            <p>Rating : <span id="postRate" class="total-rating">@Model.Rate</span></p>
+            <p>Rating : <span id="postRate" class="total-rating">@Model.AverageRate</span></p>
         </div>
-        <a asp-controller="Posts" asp-action="Show" asp-route-id="@Model.Id" class="button normal" style="vertical-align: middle"><span>Visit </span></a>
+        <button onclick="location.href='/Post/@Model.Id'" class="button normal" style="vertical-align: middle"><span>Visit</span></button>
     </div>
 </div>
 
 <script>
    function saveVotes(rate) {
-        console.log('/Rate/Create/' + $("#userId").val() + '/' + $("#postId").val() + '/' + rate);
+       if ($("#userId").val() == "") {
+           return;
+       }
         $.ajax({
             url: '/Rate/Create/' + $("#userId").val() + '/' + $("#postId").val() + '/' + rate,
             type: 'POST',
