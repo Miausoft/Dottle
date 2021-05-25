@@ -18,7 +18,9 @@ namespace Dottle.Web.Models
 
         public string Address { get; set; }
 
-        public double Rate { get; set; }
+        public int? UserRate { get; set; }
+
+        public double AverageRate { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
 
