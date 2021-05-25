@@ -9,10 +9,19 @@ namespace Dottle.Persistence.Repository
     public interface IRepository<T> where T : class
     {
         public IQueryable<T> GetAll();
-        public Task<T> GetByIdAsync(params object[] keyValues);
+
+        public IQueryable<T> GetAllInclude(string path);
+
+        public ValueTask<T> GetByIdAsync(params object[] keyValues);
+
+        public Task<T> GetByIdIncludes(Expression<Func<T, bool>> predicate, string includes = "");
+
         public IQueryable<T> SearchFor(Expression<Func<T, bool>> predicate);
+        
         public ValueTask<EntityEntry<T>> InsertAsync(T entity);
+        
         public void Delete(T entity);
+        
         public Task SaveAsync();
     }
 }

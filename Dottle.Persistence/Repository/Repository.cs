@@ -23,9 +23,14 @@ namespace Dottle.Persistence.Repository
             return _table;
         }
 
-        public async Task<T> GetByIdAsync(params object[] keyValues)
+        public IQueryable<T> GetAllInclude(string path)
         {
-            return await _table.FindAsync(keyValues);
+            return _table.Include(path);
+        }
+
+        public ValueTask<T> GetByIdAsync(params object[] keyValues)
+        {
+            return _table.FindAsync(keyValues);
         }
 
         public IQueryable<T> SearchFor(Expression<Func<T, bool>> predicate)
@@ -46,6 +51,11 @@ namespace Dottle.Persistence.Repository
         public Task SaveAsync()
         {
             return _context.SaveChangesAsync();
+        }
+
+        public Task<T> GetByIdIncludes(Expression<Func<T, bool>> predicate, string includes)
+        {
+            return _table.Include(includes).Where(predicate).FirstOrDefaultAsync();
         }
     }
 }
