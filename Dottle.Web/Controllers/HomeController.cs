@@ -35,15 +35,24 @@ namespace Dottle.Web.Controllers
             var posts = await _postRepo.GetAllInclude(nameof(Post.Rates)).ToListAsync();
             var model = _mapper.Map<List<Post>, List<PostViewModel>>(posts);
 
-            foreach(var x in posts)
+            foreach (var x in posts)
             {
                 var itemToChange = model.FirstOrDefault(m => m.Id.Equals(x.Id));
-                if(itemToChange != null)
+                if (itemToChange != null)
                 {
-                    itemToChange.Rate = x.Rates.Select(r => r.Value).DefaultIfEmpty().Average();
+                    itemToChange.AverageRate = x.Rates
+                        .Select(r => r.Value)
+                        .DefaultIfEmpty()
+                        .Average();
+
+                    itemToChange.UserRate = x.Rates
+                        .FirstOrDefault(r =>
+                        {
+                            if (User.Identity.Name == null) return false;
+                            return r.UserId.Equals(User.Identity.Name) && r.PostId.Equals(x.Id);
+                        })?.Value;
                 }
             }
-
             return View(model);
         }
 
