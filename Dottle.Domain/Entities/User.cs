@@ -18,5 +18,9 @@ namespace Dottle.Domain.Entities
         public ICollection<Post> Posts { get; set; }
 
         public ICollection<Rate> Rates { get; set; }
+
+        public ICollection<Comment> Comments { get; set; }
+
+        public ICollection<Reply> Replies { get; set; }
     }
 }

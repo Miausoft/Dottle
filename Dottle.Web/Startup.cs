@@ -63,6 +63,7 @@ namespace Dottle.Web
 
             services.AddScoped<IRepository<User>, Repository<User>>();
             services.AddScoped<IRepository<Post>, Repository<Post>>();
+            services.AddScoped<IRepository<Rate>, Repository<Rate>>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
 
             services.AddSingleton(new MapperConfiguration(mc => mc.AddProfile(new Web.AutoMapperProfile())).CreateMapper());
@@ -91,7 +92,7 @@ namespace Dottle.Web
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}");
                 endpoints.MapRazorPages();
             });
         }

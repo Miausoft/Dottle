@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
+using Dottle.Domain.Entities;
 
-namespace Dottle.Domain.Entities
+namespace Dottle.Web.Models
 {
-    public class Post
+    public class PostViewModel
     {
         public Guid Id { get; set; }
 
@@ -18,15 +18,14 @@ namespace Dottle.Domain.Entities
 
         public string Address { get; set; }
 
-        public ICollection<Rate> Rates { get; set; }
+        public int? UserRate { get; set; }
+
+        public double AverageRate { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
 
         public ICollection<TimeSheet> TimeSheets { get; set; }
 
         public Guid UserId { get; set; }
-
-        [JsonIgnore]
-        public User User { get; set; }
     }
 }

@@ -1,40 +1,50 @@
-﻿@*@using Microsoft.AspNetCore.Http
-
-@model PostShowViewModel
+﻿@model PostViewModel
 
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">@Model.Post.Title</h3>
-            <h6 class="card-subtitle mb-2 text-muted">@Model.Post.Description</h6>
+            <h3 class="card-title">@Model.Title</h3>
+            <h6 class="card-subtitle mb-2 text-muted">@Model.Description</h6>
         </div>
         <div class="card-body">
+            <h6 class="card-title">Contacts</h6>
             <ul class="list-group list-grou-flush">
-                <h6 class="card-title">Contacts</h6>
                 <li class="list-group-item">
                     <div>
-                        <b>Phone number:</b> @Model.Post.PhoneNumber
+                        <b>Phone number:</b> @Model.Phone
                     </div>
                     <div>
-                        <b>Email:</b> @Model.Post.Email
+                        <b>Email:</b> @Model.Email
                     </div>
                     <div>
-                        <b>Address:</b> @Model.Post.Address
-                    </div>
-                </li>
-
-                <h6 class="card-title">Working hours</h6>
-                <li class="list-group-item">
-                    <div>
-                        @Html.Raw(@Model.PrettyTimeSheet)
+                        <b>Address:</b> @Model.Address
                     </div>
                 </li>
             </ul>
-            @if (@Context.Session.GetString("User") != null && @Model.Post.UserId == @Context.Session.GetString("User"))
+            <h6 class="card-title mt-4">Working hours</h6>
+            <ul class="list-group list-grou-flush">
+                <li class="list-group-item">
+                    <div>
+                        @for (int i = 1; i <= 7; i++)
+                        {
+                            var timeSheet = Model.TimeSheets.FirstOrDefault(x => x.DayOfWeek == i);
+                            if (timeSheet != null)
+                            {
+                                <div>On @i works from @timeSheet.OpensAt to @timeSheet.ClosesAt</div> 
+                            }
+                            else
+                            {
+                                <div>On @i does not work</div>
+                            }
+                        }
+                    </div>
+                </li>
+            </ul>
+            @if (User.Identity.Name != null && Model.Id == Guid.Parse(User.Identity.Name))
             {
                 <div class="action-container">
-                    <a asp-controller="Posts" asp-action="Edit" asp-route-id="@Model.Post.Id" class="button normal" style="vertical-align: middle"><span>Edit </span></a>
-                    <a asp-controller="Posts" asp-action="Delete" asp-route-id="@Model.Post.Id" class="button danger" style="vertical-align: middle"><span>Delete </span></a>
+                    <a asp-controller="Posts" asp-action="Edit" asp-route-id="@Model.Id" class="button normal" style="vertical-align: middle"><span>Edit </span></a>
+                    <a asp-controller="Posts" asp-action="Delete" asp-route-id="@Model.Id" class="button danger" style="vertical-align: middle"><span>Delete </span></a>
                 </div>
             }
             <div class="card">
@@ -42,11 +52,10 @@
                     <h4 class="card-title">Interested? Contact the business owner!</h4>
                 </div>
                 <div class="card-body">
-                    @{ await Html.RenderPartialAsync("_ContactForm", new Inquiry {Email = Model.Post.Email}); }
+                    @*@{ await Html.RenderPartialAsync("ContactForm", new Inquiry { Email = Model.Post.Email }); }*@
+                    <partial name="ContactForm" />
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-*@

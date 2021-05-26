@@ -16,12 +16,8 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Posts" asp-action="New">New Post</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="Create">New Post</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Edit">My Profile</a>
-                    </li>
-                    
                 }
             </ul>
         </div>
@@ -33,7 +29,7 @@
                         <span class="nav-link text-dark">Hi there, @User.Claims.Where(c => c.Type == ClaimTypes.GivenName).Select(c => c.Value).SingleOrDefault()</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Auth" asp-action="SignOut">Sign Out</a>
+                        <a class="nav-link" asp-controller="Authentication" asp-action="Logout">Sign Out</a>
                     </li>
                 }
                 else

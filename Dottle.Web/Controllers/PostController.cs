@@ -9,6 +9,7 @@ using System.Collections.Generic;
 
 namespace Dottle.Web.Controllers
 {
+    [Route("Post")]
     public class PostController : Controller
     {
         private readonly IRepository<Post> _postRepo;
@@ -19,11 +20,11 @@ namespace Dottle.Web.Controllers
             _postRepo = postRepo;
             _mapper = mapper;
         }
-        
-        [HttpGet]
-        public IActionResult Index()
+
+        [HttpGet("{postId}")]
+        public async Task<IActionResult> Index(Guid postId)
         {
-            return View();
+            return View(_mapper.Map<PostViewModel>(await _postRepo.GetByIdIncludes(p => p.Id.Equals(postId), nameof(Post.TimeSheets))));
         }
 
         [HttpGet]
@@ -33,29 +34,14 @@ namespace Dottle.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CreatePostViewModel model)
+        public async Task<IActionResult> Create(CreatePostViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-            /*List <TimeSheet> list = new List<TimeSheet>();
-            int i = 1;
-            foreach(var a in model.TimeSheets)
-            {
-                if(a.Selected)
-                {
-                    TimeSheet = new TimeSheet
-                    {
-                        DayOfWeek = i,
-                        OpensAt = (int)TimeSpan.Parse(a.OpensAt).TotalSeconds,
-                        ClosesAt = (int)TimeSpan.Parse(a.ClosesAt).TotalSeconds,
-                        Post = 
-                    }
-                }
-                i++;
-            }
+            //TODO: MUST move mapping somewhere else
 
             Post post = new Post
             {
@@ -64,15 +50,39 @@ namespace Dottle.Web.Controllers
                 Email = model.Email,
                 Phone = model.Phone,
                 Address = model.Address,
-                User 
-            };*/
+                UserId = Guid.Parse(User.Identity.Name)
+            };
 
-            return Json(model);
+            List<TimeSheet> timeSheets = new List<TimeSheet>();
+            for (int i = 1; i <= 7; ++i)
+            {
+                if (model.TimeSheets[i].Selected)
+                {
+                    timeSheets.Add(new TimeSheet
+                    {
+                        DayOfWeek = i,
+                        OpensAt = (int)TimeSpan.Parse(model.TimeSheets[i].OpensAt).TotalSeconds,
+                        ClosesAt = (int)TimeSpan.Parse(model.TimeSheets[i].ClosesAt).TotalSeconds,
+                        Post = post
+                    });
+                }
+            }
+            post.TimeSheets = timeSheets;
 
-            /*Post post = _mapper.Map<Post>(model);
-            post.User.Id = new Guid(User.Identity.Name);
+            await _postRepo.InsertAsync(post);
+            await _postRepo.SaveAsync();
 
-            return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace(nameof(Controller), ""));*/
+            return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace(nameof(Controller), ""));
+        }
+
+        [HttpPost("Delete/{postId}")]
+        public async Task<IActionResult> Delete(Guid postId)
+        {
+            _postRepo.Delete(await _postRepo.GetByIdAsync(postId));
+            await _postRepo.SaveAsync();
+
+            //TODO: MUST return a view with the success message
+            return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace(nameof(Controller), ""));
         }
     }
 }
