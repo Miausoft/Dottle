@@ -11,6 +11,7 @@ namespace Dottle.Web
             CreateMap<CreateUserViewModel, User>();
             CreateMap<CreatePostViewModel, Post>();
             CreateMap<Post, PostViewModel>();
+            CreateMap<TimeSheet, TimeSheetViewModel>();
         }
     }
 }
