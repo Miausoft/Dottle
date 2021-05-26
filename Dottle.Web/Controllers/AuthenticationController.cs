@@ -43,7 +43,7 @@ namespace Dottle.Web.Controllers
             }
 
             User user = _userRepo.SearchFor(u => u.Email.Equals(model.Email)).FirstOrDefault();
-            if(user == null)
+            if(user == default(User))
             {
                 // TODO: pranesimas apie neteisinga slaptazodi ar el. pasta
                 return View();

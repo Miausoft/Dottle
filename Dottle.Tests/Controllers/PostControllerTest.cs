@@ -14,13 +14,14 @@ using Dottle.Web.Models;
 
 namespace Dottle.Tests.Controllers
 {
-    public class PostControllerTest : BaseControllerTest
+    public class PostControllerTest
     {
-        public PostControllerTest() : base(
-            new DbContextOptionsBuilder<DatabaseContext>()
-            .UseInMemoryDatabase("DottleDB")
-            .Options)
+        private readonly Mock<IRepository<Post>> _repository;
+        private readonly Mock<IMapper> _mapper;
+        public PostControllerTest()
         {
+            _repository = new Mock<IRepository<Post>>();
+            _mapper = new Mock<IMapper>();
         }
 
         private PostController MockController(DatabaseContext context)
@@ -34,10 +35,9 @@ namespace Dottle.Tests.Controllers
         [Fact]
         public void Index_ShouldReturnEmptyViewResult()
         {
-            using var context = new DatabaseContext(ContextOptions);
-            var postController = MockController(context);
+            var controller = new PostController(_repository.Object, _mapper.Object);
 
-            var result = postController.Index() as ViewResult;
+            var result = controller.Index() as ViewResult;
 
             Assert.NotNull(result);
         }
@@ -45,10 +45,9 @@ namespace Dottle.Tests.Controllers
         [Fact]
         public void Create_ShouldReturnViewResult()
         {
-            using var context = new DatabaseContext(ContextOptions);
-            var postController = MockController(context);
+            var controller = new PostController(_repository.Object, _mapper.Object);
 
-            var result = postController.Create() as ViewResult;
+            var result = controller.Create() as ViewResult;
 
             Assert.NotNull(result);
         }
@@ -56,8 +55,7 @@ namespace Dottle.Tests.Controllers
         [Fact]
         public void Create_ShouldReturnJson_WithCreatePostViewModel()
         {
-            using var context = new DatabaseContext(ContextOptions);
-            var postController = MockController(context);
+            var controller = new PostController(_repository.Object, _mapper.Object);
             var cpvm = new CreatePostViewModel
             {
                 Title = "T1",
@@ -68,7 +66,7 @@ namespace Dottle.Tests.Controllers
                 TimeSheets = new List<TimeSheetViewModel>() { }
             };
 
-            var result = postController.Create(cpvm) as JsonResult;
+            var result = controller.Create(cpvm) as JsonResult;
 
             Assert.NotNull(result);
         }
