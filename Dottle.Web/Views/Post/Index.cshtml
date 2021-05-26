@@ -22,30 +22,32 @@
                 </li>
             </ul>
             <h6 class="card-title mt-4">Working hours</h6>
-            <ul class="list-group list-grou-flush">
-                <li class="list-group-item">
-                    <div>
-                        @for (int i = 1; i <= 7; i++)
-                        {
-                            var timeSheet = Model.TimeSheets.FirstOrDefault(x => x.DayOfWeek == i);
-                            if (timeSheet != null)
-                            {
-                                <div>On @i works from @timeSheet.OpensAt to @timeSheet.ClosesAt</div> 
-                            }
-                            else
-                            {
-                                <div>On @i does not work</div>
-                            }
-                        }
-                    </div>
-                </li>
-            </ul>
+            <table class="list-group list-grou-flush list-group-item">
+                @foreach (Dottle.Domain.Enums.Days day in Enum.GetValues(typeof(Dottle.Domain.Enums.Days)))
+                {
+                    var timeSheet = Model.TimeSheets.FirstOrDefault(x => x.DayOfWeek == (int)day);
+                    if (timeSheet != null)
+                    {
+                        <tr>
+                            <td>@day&emsp;&emsp;&emsp;</td>
+                            <td>@TimeSpan.FromSeconds(timeSheet.OpensAt).ToString("hh\\:mm") - @TimeSpan.FromSeconds(timeSheet.ClosesAt).ToString("hh\\:mm")</td>
+                        </tr> 
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>@day&emsp;&emsp;&emsp;</td>
+                            <td>Closed</td>
+                        </tr>
+                    }
+                }
+            </table>
             @if (User.Identity.Name != null && Model.Id == Guid.Parse(User.Identity.Name))
             {
                 <div class="action-container">
                     <a asp-controller="Posts" asp-action="Edit" asp-route-id="@Model.Id" class="button normal" style="vertical-align: middle"><span>Edit </span></a>
                     <a asp-controller="Posts" asp-action="Delete" asp-route-id="@Model.Id" class="button danger" style="vertical-align: middle"><span>Delete </span></a>
-                </div>
+                </div>            
             }
             <div class="card">
                 <div class="card-header">
