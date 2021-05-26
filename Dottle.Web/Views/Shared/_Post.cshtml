@@ -5,30 +5,27 @@
         <h5 class="card-title">@Model.Title</h5>
         <p class="card-title">@Model.Description</p>
         <div class="rating-carts" id='div_<%#Container.DataItemIndex %>' value="false">
-            <input type="hidden" id="postId" value="@Model.Id" />
-            <input type="hidden" id="userId" value="@User.Identity.Name" />
             @for (int i = 1; i <= 5; ++i)
             {
-                <a class="cart-outline @(Model.AverageRate > i - 1 ? "filled" : "")" title="vote @i" onclick="saveVotes(@i)">vote @i</a>
+                <a class="cart-outline @(Model.AverageRate > i - 1 ? "filled" : "")" title="vote @i" onclick=@(User.Identity.Name == null ? "" : "saveVotes(\""+@Model.Id+"\",\""+@User.Identity.Name+"\","+@i+")")>vote @i</a>
             }
             <p>Rating : <span id="postRate" class="total-rating">@Model.AverageRate</span></p>
+            <p id ="userRate" style=@(Model.UserRate == null ? "display:none;" : "")>Your rating : @Model.UserRate</p>
         </div>
         <button onclick="location.href='/Post/@Model.Id'" class="button normal" style="vertical-align: middle"><span>Visit</span></button>
     </div>
 </div>
 
 <script>
-   function saveVotes(rate) {
-       if ($("#userId").val() == "") {
-           return;
-       }
+    function saveVotes(postId, userId, rate) {
         $.ajax({
-            url: '/Rate/Create/' + $("#userId").val() + '/' + $("#postId").val() + '/' + rate,
+            url: '/Rate/Create/' + userId + '/' + postId + '/' + rate,
             type: 'POST',
             contentType: "application/json",
             success: function () {
-                getRates().then(function (result) {
+                getRates(postId).then(function (result) {
                     $("#postRate").text(result).removeAttr("style");
+                    $("#userRate").text("Your rating : " + result).removeAttr("style");
                     console.log(result);
                 })
             },
@@ -38,11 +35,11 @@
         });
     }
 
-    function getRates() {
+    function getRates(postId) {
         return Promise.resolve($.ajax({
-            url: 'Rate/' + $("#postId").val(),
+            url: 'Rate/' + postId,
             method: 'GET',
             contentType: "application/json"
         }));
     }
- </script>
+</script>
