@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Dottle.Web.Controllers
 {
@@ -49,7 +50,7 @@ namespace Dottle.Web.Controllers
                         .FirstOrDefault(r =>
                         {
                             if (User.Identity.Name == null) return false;
-                            return r.UserId.Equals(User.Identity.Name) && r.PostId.Equals(x.Id);
+                            return r.UserId.Equals(Guid.Parse(User.Identity.Name)) && r.PostId.Equals(x.Id);
                         })?.Value;
                 }
             }
