@@ -6,6 +6,7 @@ using Dottle.Domain.Entities;
 using Dottle.Web.Models;
 using AutoMapper;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Dottle.Web.Controllers
 {
@@ -24,7 +25,8 @@ namespace Dottle.Web.Controllers
         [HttpGet("{postId}")]
         public async Task<IActionResult> Index(Guid postId)
         {
-            return View(_mapper.Map<PostViewModel>(await _postRepo.GetByIdIncludes(p => p.Id.Equals(postId), nameof(Post.TimeSheets))));
+            Post post = await _postRepo.GetByIdIncludes(p => p.Id.Equals(postId), nameof(Post.TimeSheets));
+            return View(_mapper.Map<PostViewModel>(post));
         }
 
         [HttpGet]
@@ -54,13 +56,13 @@ namespace Dottle.Web.Controllers
             };
 
             List<TimeSheet> timeSheets = new List<TimeSheet>();
-            for (int i = 1; i <= 7; ++i)
+            for (int i = 0; i < 7; ++i)
             {
                 if (model.TimeSheets[i].Selected)
                 {
                     timeSheets.Add(new TimeSheet
                     {
-                        DayOfWeek = i,
+                        DayOfWeek = i+1,
                         OpensAt = (int)TimeSpan.Parse(model.TimeSheets[i].OpensAt).TotalSeconds,
                         ClosesAt = (int)TimeSpan.Parse(model.TimeSheets[i].ClosesAt).TotalSeconds,
                         Post = post
