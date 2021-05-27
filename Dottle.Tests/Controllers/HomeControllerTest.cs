@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Moq;
 using Xunit;
 using System.Linq;
+using AutoMapper;
 
 namespace Dottle.Tests.Controllers
 {
@@ -19,18 +20,13 @@ namespace Dottle.Tests.Controllers
     {
         private readonly Mock<IRepository<Post>> _repository;
         private readonly Mock<IConfiguration> _configuration;
+        private readonly Mock<IMapper> _mapper;
 
         public HomeControllerTest()
         {
             _repository = new Mock<IRepository<Post>>();
             _configuration = new Mock<IConfiguration>();
-        }
-
-        private HomeController MockController(DatabaseContext context)
-        {
-            var repository = new Repository<Post>(context);
-            var confMock = new Mock<IConfiguration>();
-            return new HomeController(repository, confMock.Object);
+            _mapper = new Mock<IMapper>();
         }
 
         /*[Fact]
@@ -51,9 +47,9 @@ namespace Dottle.Tests.Controllers
         }*/
 
         [Fact]
-        public void Settings_ShouldReturnViewResultNamedSettings()
+        public void Settings_ShouldReturnViewResultWithUserSettings()
         {
-            var homeController = new HomeController(_repository.Object, _configuration.Object);
+            var homeController = new HomeController(_repository.Object, _mapper.Object, _configuration.Object);
 
             var result = homeController.Settings() as ViewResult;
 
@@ -65,7 +61,7 @@ namespace Dottle.Tests.Controllers
         [Fact]
         public void UpdateSettings_ShouldReturnRedirectResult_WithValidUserSettingsData()
         {
-            var homeController = new HomeController(_repository.Object, _configuration.Object);
+            var homeController = new HomeController(_repository.Object, _mapper.Object, _configuration.Object);
             UserSetting userSetting = new UserSetting
             {
                 SiteLayout = string.Empty,

@@ -48,7 +48,7 @@ namespace Dottle.Tests.Controllers
         }
 
         [Fact]
-        public void Login_ShouldReturnViewResult_WithNonExistingUserLoginData()
+        public void Login_ShouldReturnViewResult_WithNonExistingUser()
         {
             _repository
                 .Setup(x => x.SearchFor(It.IsAny<Expression<Func<User, bool>>>()))
@@ -64,7 +64,7 @@ namespace Dottle.Tests.Controllers
         }
 
         [Fact]
-        public void Login_ShouldReturnViewResult_WithInvalidUsersPassword()
+        public void Login_ShouldReturnViewResult_WithInvalidPassword()
         {
             List<User> returnUsers = new List<User>()
             {
@@ -82,7 +82,7 @@ namespace Dottle.Tests.Controllers
             var controller = new AuthenticationController(_repository.Object, _hasher.Object, _mapper.Object);
 
             var result = controller
-                .Login(new Web.Models.LoginViewModel { Email = "user@gmail.com", Password = "X!1411ASA!!-" })
+                .Login(new LoginViewModel { Email = "user@gmail.com", Password = "X!1411ASA!!-" })
                 .GetAwaiter().GetResult() as ViewResult;
 
             Assert.NotNull(result);
